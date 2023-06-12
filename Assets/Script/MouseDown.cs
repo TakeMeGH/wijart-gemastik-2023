@@ -28,10 +28,10 @@ public class MouseDown : MonoBehaviour
     Vector3 originPos = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
     // Debug.Log(originPos);
     // Debug.Log((originPos - boxSize + offset) + " + " + (originPos - boxSize + new Vector3(boxSize.x * 2, 0, 0) + offset));
-    Debug.DrawLine(originPos - boxSize + offset, originPos - boxSize + new Vector3(boxSize.x * 2, 0, 0) + offset, Color.red);
-    Debug.DrawLine(originPos - boxSize + offset, originPos - boxSize + new Vector3(0, boxSize.y * 2, 0) + offset, Color.red);
-    Debug.DrawLine(originPos + boxSize + offset, originPos + boxSize - new Vector3(boxSize.x * 2, 0, 0) + offset, Color.red);
-    Debug.DrawLine(originPos + boxSize + offset, originPos + boxSize - new Vector3(0, boxSize.y * 2, 0) + offset, Color.red);
+    // Debug.DrawLine(originPos - boxSize + offset, originPos - boxSize + new Vector3(boxSize.x * 2, 0, 0) + offset, Color.red);
+    // Debug.DrawLine(originPos - boxSize + offset, originPos - boxSize + new Vector3(0, boxSize.y * 2, 0) + offset, Color.red);
+    // Debug.DrawLine(originPos + boxSize + offset, originPos + boxSize - new Vector3(boxSize.x * 2, 0, 0) + offset, Color.red);
+    // Debug.DrawLine(originPos + boxSize + offset, originPos + boxSize - new Vector3(0, boxSize.y * 2, 0) + offset, Color.red);
 
     if (Input.GetMouseButtonDown(0))
     {
@@ -43,17 +43,25 @@ public class MouseDown : MonoBehaviour
       _ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
       // boxDebug = StartCoroutine(debugBoxCast());
       Debug.Log(_mainCamera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, _mainCamera.nearClipPlane)));
-      hits = Physics.BoxCastAll(_ray.origin, boxSize, _ray.direction.normalized, Quaternion.identity, Mathf.Infinity, _myLayerMask);
-      foreach (RaycastHit obj in hits)
+      if (Physics.Raycast(_ray, out _hit, Mathf.Infinity, _myLayerMask))
       {
-        if (obj.transform.gameObject.tag == "mobil")
+        if (_hit.transform.gameObject.tag == "mobil")
         {
           Debug.Log("Click");
-          obj.transform.GetComponent<Renderer>().material.color =
-              obj.transform.GetComponent<Renderer>().material.color == Color.red ? Color.blue : Color.red;
+          _hit.transform.GetComponent<Renderer>().material.color =
+              _hit.transform.GetComponent<Renderer>().material.color == Color.red ? Color.blue : Color.red;
         }
-        // Destroy(obj.transform.gameObject);
       }
+      // foreach (RaycastHit obj in hits)
+      // {
+      //   if (obj.transform.gameObject.tag == "mobil")
+      //   {
+      //     Debug.Log("Click");
+      //     obj.transform.GetComponent<Renderer>().material.color =
+      //         obj.transform.GetComponent<Renderer>().material.color == Color.red ? Color.blue : Color.red;
+      //   }
+      //   // Destroy(obj.transform.gameObject);
+      // }
 
       //   for ()
       //     if (_hit.transform == transform)
