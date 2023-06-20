@@ -5,15 +5,16 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     Rigidbody rb;
+    public Vector3 speed;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        rb.velocity = new Vector3(0, 0, 5f);
+    private void FixedUpdate() {
+        rb.velocity = speed;
+        Debug.Log(speed);
     }
+    
 }
