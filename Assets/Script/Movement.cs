@@ -14,7 +14,6 @@ public class Movement : MonoBehaviour
 
     private void FixedUpdate() {
         rb.velocity = speed;
-        Debug.Log(speed);
     }
     
 }
