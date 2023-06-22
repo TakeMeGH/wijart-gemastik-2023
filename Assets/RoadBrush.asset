@@ -37,5 +37,17 @@ MonoBehaviour:
   m_CanChangeZPosition: 0
   m_FloodFillContiguousOnly: 1
   m_Anchor: {x: 0.5, y: 0.5, z: 0.5}
-  m_Prefabs: []
+  m_Prefabs:
+  - {fileID: 3825831419927756046, guid: 4f3d75d6d460e324ebc9d6eb75cfa2b9, type: 3}
+  - {fileID: 7944498732433986174, guid: 0677363a467ae1841ba785bab2ecb89f, type: 3}
+  - {fileID: 5511925325822977819, guid: 314518fc41d71eb4fb38c49db04a9017, type: 3}
+  - {fileID: 4680216828127606534, guid: 727bfdf627fdbb9479b1bbb7943057fe, type: 3}
+  - {fileID: 1085619953898477894, guid: 606395b6bae8e9c4ea6ce57016530bf5, type: 3}
+  - {fileID: 1145015927610792119, guid: 6d64aa977e9086a4d8e7d2db6869371f, type: 3}
+  - {fileID: 2229878074283220507, guid: a520b0176472e174b987fc693b7ff85c, type: 3}
+  - {fileID: 6052195162557978451, guid: 0d1d487e824d231469f8393714140df4, type: 3}
+  - {fileID: 3527809801387733419, guid: 745eb0ddb66e65e4da49e58314e497da, type: 3}
+  - {fileID: 5360495371742090635, guid: b58133765f90caa4194a4bfda40b5a50, type: 3}
+  - {fileID: 8282542145202343387, guid: 1712e95c73a86624eb1492f1e1999e5e, type: 3}
+  - {fileID: 4827041865681429966, guid: ae7e20aad0d97504aa0b03d86eeaef76, type: 3}
   m_PerlinScale: 0.5
