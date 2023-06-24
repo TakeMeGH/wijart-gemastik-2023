@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 7865608105762096087}
   - component: {fileID: 4536620718129916801}
   - component: {fileID: 782344361099182135}
+  - component: {fileID: -5980504837239738419}
+  - component: {fileID: 4555821383712229336}
   m_Layer: 6
   m_Name: Mobil_1_Pink_D
   m_TagString: mobil
@@ -135,6 +137,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: {x: 0, y: 0, z: 0}
+--- !u!114 &-5980504837239738419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7200461953719426082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f75d7b85a0721348a7d21a412f53c3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curObjectPenalty: 0
+--- !u!114 &4555821383712229336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7200461953719426082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27757002e98d42546910db710e8c7080, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wrongPenalty: {fileID: 0}
+  correctPenalty: {fileID: 0}
+  netralPenalty: {fileID: 0}
 --- !u!1001 &7255020523286433403
 PrefabInstance:
   m_ObjectHideFlags: 0

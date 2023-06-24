@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 1465421038253694488}
   - component: {fileID: 343729071013353531}
   - component: {fileID: -558780856925589006}
+  - component: {fileID: -7416170934536795460}
+  - component: {fileID: 408287382070504600}
   m_Layer: 6
   m_Name: Mobil_6_Peach_D
   m_TagString: mobil
@@ -132,3 +134,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: {x: 0, y: 0, z: 0}
+--- !u!114 &-7416170934536795460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3853118333542774802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f75d7b85a0721348a7d21a412f53c3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curObjectPenalty: 0
+--- !u!114 &408287382070504600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3853118333542774802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27757002e98d42546910db710e8c7080, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wrongPenalty: {fileID: 0}
+  correctPenalty: {fileID: 0}
+  netralPenalty: {fileID: 0}

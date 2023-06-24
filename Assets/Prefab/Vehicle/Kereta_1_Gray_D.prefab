@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 1362107919325387532}
   - component: {fileID: 9068889578753595827}
   - component: {fileID: 2197366505962827658}
+  - component: {fileID: 2609895836524332134}
+  - component: {fileID: 3128383259364694720}
   m_Layer: 6
   m_Name: Kereta_1_Gray_D
   m_TagString: mobil
@@ -129,3 +131,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: {x: 0, y: 0, z: 0}
+--- !u!114 &2609895836524332134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5620407210078074204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f75d7b85a0721348a7d21a412f53c3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curObjectPenalty: 0
+--- !u!114 &3128383259364694720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5620407210078074204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27757002e98d42546910db710e8c7080, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wrongPenalty: {fileID: 2100000, guid: eef53680c64bbe442abfc42dc5042ca8, type: 2}
+  correctPenalty: {fileID: 2100000, guid: 23c43ad5f56f0de4cb78ddbfb1314075, type: 2}
+  netralPenalty: {fileID: 2100000, guid: 3b226e7edf13b8c4d8deb63d25787ad5, type: 2}

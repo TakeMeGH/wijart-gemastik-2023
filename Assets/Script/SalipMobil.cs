@@ -58,6 +58,7 @@ public class SalipMobil : MonoBehaviour
         }
         else if(fastMobil.transform.position.z >= slowMobil.transform.position.z + 5){
             if(fastMobil.transform.position.x >= slowMobil.transform.position.x){
+                fastMobil.GetComponent<CategoryPenalty>().curObjectPenalty = CategoryPenalty.Penalty.Ugal;
                 fastMobil.transform.rotation = Quaternion.Euler(0, -25, 0);
                 fastMobil.GetComponent<Movement>().speed = new Vector3(takeOverSpeed, 0, fastSpeed.z);
             }
