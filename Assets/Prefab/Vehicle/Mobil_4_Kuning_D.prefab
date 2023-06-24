@@ -160,6 +160,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27757002e98d42546910db710e8c7080, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wrongPenalty: {fileID: 0}
-  correctPenalty: {fileID: 0}
-  netralPenalty: {fileID: 0}
+  wrongPenalty: {fileID: 2100000, guid: eef53680c64bbe442abfc42dc5042ca8, type: 2}
+  correctPenalty: {fileID: 2100000, guid: 23c43ad5f56f0de4cb78ddbfb1314075, type: 2}
+  netralPenalty: {fileID: 2100000, guid: 3b226e7edf13b8c4d8deb63d25787ad5, type: 2}
