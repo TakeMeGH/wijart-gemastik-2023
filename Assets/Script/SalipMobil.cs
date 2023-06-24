@@ -4,16 +4,25 @@ using UnityEngine;
 
 public class SalipMobil : MonoBehaviour
 {
-    [SerializeField] Transform leftPos;
-    [SerializeField] Transform rightPos;
-    [SerializeField] GameObject mobilLeft;
-    [SerializeField] GameObject mobilRight;
+    [Header("Vehicle Position")]
+    public Transform leftPos;
+    public Transform rightPos;
+    [Header("Vehicle Type")]
+    public GameObject mobilLeft;
+    public GameObject mobilRight;
+    // [Header("Vehicle Ahead")]
+    // public GameObject leftAhead;
+    // public GameObject rightAhead;
+    [Header("Parrent Condition")]
+    public SpawnMobil spawnMobil;
+    public int posIdx;
     public Vector3 slowSpeed;
     public Vector3 fastSpeed;
     public float takeOverSpeed;
     GameObject fastMobil;
     GameObject slowMobil;
     [SerializeField] float waitTime;
+    [SerializeField] float stableTime;
     bool firstTime = true;
     [SerializeField] float spawnOffsetY;
     // Start is called before the first frame update
@@ -23,6 +32,9 @@ public class SalipMobil : MonoBehaviour
         fastMobil = Instantiate(mobilRight, rightPos.position, rightPos.rotation);
         slowMobil.GetComponent<Movement>().speed = Vector3.zero;
         fastMobil.GetComponent<Movement>().speed = Vector3.zero;
+
+        spawnMobil.curObject[posIdx] = fastMobil;
+        spawnMobil.curObject[posIdx-1] = slowMobil;
     }
 
     void FixedUpdate() {
@@ -35,10 +47,16 @@ public class SalipMobil : MonoBehaviour
             fastMobil.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
 
             slowMobil.GetComponent<Movement>().speed = slowSpeed;
-            fastMobil.GetComponent<Movement>().speed = fastSpeed;
+            fastMobil.GetComponent<Movement>().speed = new Vector3(0, 0, slowSpeed.z - 5f);
             firstTime = false;
         }
-        if(fastMobil.transform.position.z >= slowMobil.transform.position.z){
+        else if(stableTime > 0){
+            stableTime -= Time.deltaTime;
+        }
+        else if(stableTime <= 0 && fastMobil.transform.position.z < slowMobil.transform.position.z + 5){
+            fastMobil.GetComponent<Movement>().speed = fastSpeed;
+        }
+        else if(fastMobil.transform.position.z >= slowMobil.transform.position.z + 5){
             if(fastMobil.transform.position.x >= slowMobil.transform.position.x){
                 fastMobil.transform.rotation = Quaternion.Euler(0, -25, 0);
                 fastMobil.GetComponent<Movement>().speed = new Vector3(takeOverSpeed, 0, fastSpeed.z);
@@ -46,6 +64,7 @@ public class SalipMobil : MonoBehaviour
             else{
                 fastMobil.transform.rotation = Quaternion.Euler(0, 0, 0);
                 fastMobil.GetComponent<Movement>().speed = slowSpeed;
+                Destroy(this.gameObject);
             }
         }   
     }
