@@ -84,6 +84,10 @@ public class SpawnMobil : MonoBehaviour
     }
 
     void spawnSpecialCar(){
+        if(listSpecialEvent.Count == 0){
+            counterStandardCar = Random.Range(minCarCounter, maxCarCounter + 1);
+            return;
+        }
         int randomSpecialIdx = Random.Range(0, listSpecialEvent.Count);
 
         int randomSpecial = listSpecialEvent[randomSpecialIdx];

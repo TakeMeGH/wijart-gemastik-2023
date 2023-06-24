@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 243918075983211441}
   - component: {fileID: 1021120065698588557}
   - component: {fileID: -7584056479189508344}
+  - component: {fileID: 490561172418165424}
+  - component: {fileID: 513225071904206620}
   m_Layer: 6
   m_Name: Mobil_3_Hijau_D
   m_TagString: mobil
@@ -132,3 +134,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: {x: 0, y: 0, z: 0}
+--- !u!114 &490561172418165424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8071394651153668903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f75d7b85a0721348a7d21a412f53c3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curObjectPenalty: 0
+--- !u!114 &513225071904206620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8071394651153668903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27757002e98d42546910db710e8c7080, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wrongPenalty: {fileID: 0}
+  correctPenalty: {fileID: 0}
+  netralPenalty: {fileID: 0}
