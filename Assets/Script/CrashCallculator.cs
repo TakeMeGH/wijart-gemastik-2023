@@ -71,7 +71,7 @@ public class CrashCallculator : MonoBehaviour
         }
     }
 
-    public bool isCrash(GameObject curVehicle, Vector3 otherPos, Vector3 otherSpd, Vector3 endPos, float tol = 10f){
+    public bool isCrash(GameObject curVehicle, Vector3 otherPos, Vector3 otherSpd, Vector3 endPos, float tol = 15f){
         Vector3 pos = curVehicle.transform.position;
         Vector3 speed = curVehicle.GetComponent<Movement>().speed;
 

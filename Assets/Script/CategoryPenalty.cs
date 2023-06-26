@@ -7,6 +7,7 @@ public class CategoryPenalty : MonoBehaviour
     public enum Penalty
     {
      noPenalty,
+     Salip,
      Ugal,
      Lambat
     }
