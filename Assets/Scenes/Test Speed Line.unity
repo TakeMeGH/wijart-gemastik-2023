@@ -11436,6 +11436,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minTilt: 15
   maxTilt: 30
+  direction: 0
   minTurnTime: 5
   maxTurnTime: 5
   minTurnSpeed: 5
@@ -11443,7 +11444,12 @@ MonoBehaviour:
   leftBound: {fileID: 458648195}
   rightBound: {fileID: 594337082}
   transitionTime: 0.4
-  car: {fileID: 49624157}
+  carModel: {fileID: 0}
+  carSpeed: 0
+  spawnOffsetY: 0
+  waitTime: 0
+  spawnMobil: {fileID: 0}
+  posIdx: 0
 --- !u!4 &319361930
 Transform:
   m_ObjectHideFlags: 0
@@ -13856,6 +13862,11 @@ PrefabInstance:
     - target: {fileID: 2486840187428593583, guid: 7753166ad75d44945a8d977bb5cffcd9,
         type: 3}
       propertyPath: isFastTrack.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2486840187428593583, guid: 7753166ad75d44945a8d977bb5cffcd9,
+        type: 3}
+      propertyPath: mobilBesarPadaJalurCepat
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2486840187428593583, guid: 7753166ad75d44945a8d977bb5cffcd9,
@@ -35202,6 +35213,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2486840187428593583, guid: 7753166ad75d44945a8d977bb5cffcd9,
+        type: 3}
+      propertyPath: MobilUgal
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2486840187428593583, guid: 7753166ad75d44945a8d977bb5cffcd9,
         type: 3}
@@ -83193,6 +83209,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2486840187428593583, guid: 7753166ad75d44945a8d977bb5cffcd9,
         type: 3}
+      propertyPath: MobilUgal
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2486840187428593583, guid: 7753166ad75d44945a8d977bb5cffcd9,
+        type: 3}
+      propertyPath: mobilSalip
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2486840187428593583, guid: 7753166ad75d44945a8d977bb5cffcd9,
+        type: 3}
+      propertyPath: mobilNgebut
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2486840187428593583, guid: 7753166ad75d44945a8d977bb5cffcd9,
+        type: 3}
       propertyPath: endPos.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -83226,6 +83257,11 @@ PrefabInstance:
       propertyPath: startPos.Array.data[2]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2486840187428593583, guid: 7753166ad75d44945a8d977bb5cffcd9,
+        type: 3}
+      propertyPath: mobilCepatPadaJalurLambat
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2486840188995045109, guid: 7753166ad75d44945a8d977bb5cffcd9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -83235,6 +83271,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: -35
+      objectReference: {fileID: 0}
+    - target: {fileID: 5298480410177215942, guid: 7753166ad75d44945a8d977bb5cffcd9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7248162291673721623, guid: 7753166ad75d44945a8d977bb5cffcd9,
         type: 3}
