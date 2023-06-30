@@ -65,7 +65,7 @@ public class MobilUgal : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(car == null) Destroy(this);
+        if(car == null) Destroy(gameObject);
         waitTime -= Time.deltaTime;
         if(waitTime > 0) return;
         if(firstTime){

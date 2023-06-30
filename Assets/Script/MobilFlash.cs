@@ -63,5 +63,6 @@ public class MobilFlash : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
         }
         curRenderer.materials = originalMaterial;
+        clickRoutine = null;
     }
 }
