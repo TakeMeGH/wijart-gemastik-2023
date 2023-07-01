@@ -23,6 +23,7 @@ public class SpawnMobil : MonoBehaviour
     [SerializeField] bool mobilSalip;
     [SerializeField] bool MobilUgal;
     [SerializeField] bool mobilBesarPadaJalurCepat;
+    [SerializeField] float spawnInterval = 2f;
     public List<bool> isFastTrack;
     [Header("Special Event Prefab")]
     [SerializeField] GameObject listEvent;
@@ -47,7 +48,7 @@ public class SpawnMobil : MonoBehaviour
         }
 
         counterStandardCar = Random.Range(minCarCounter, maxCarCounter + 1);
-        InvokeRepeating("spawnRandomCar",0, 2f);
+        InvokeRepeating("spawnRandomCar",0, spawnInterval);
     }
 
     // Update is called once per frame
@@ -86,7 +87,7 @@ public class SpawnMobil : MonoBehaviour
     }
     IEnumerator customInstantiateCar(int posIdx, GameObject choosenCar, float speed, CategoryPenalty.Penalty carPenalty = CategoryPenalty.Penalty.noPenalty){
         GameObject spawnedCar = Instantiate(choosenCar, 
-            startPos[posIdx].position, Quaternion.identity);
+            startPos[posIdx].position, startPos[posIdx].rotation);
 
         spawnedCar.GetComponent<CategoryPenalty>().curObjectPenalty = carPenalty;
         spawnedCar.GetComponent<Movement>().speed.z = speed;
