@@ -80,7 +80,8 @@ MonoBehaviour:
   mobilSalip: 1
   MobilUgal: 0
   mobilBesarPadaJalurCepat: 0
-  isFastTrack: 000000
+  spawnInterval: 2
+  isFastTrack: 00000000000000000000
   listEvent: {fileID: 7248162291673721622}
   spawnOffsetY: 0.01
   minCarCounter: 5

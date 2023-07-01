@@ -28,8 +28,13 @@ public class CrashCallculator : MonoBehaviour
     }
 
     public bool isCrash(Vector3 pos, Vector3 speed, Vector3 otherPos, Vector3 otherSpd, Vector3 endPos, float tol = 10f){
-        if(otherSpd.z < speed.z && otherPos.z < pos.z) return false;
-        if(otherSpd.z > speed.z && otherPos.z > pos.z) return false;
+        if(speed.z < 0){
+            tol *= -1;
+        }
+        if(speed.z <= 0 && otherSpd.z > speed.z && otherPos.z > pos.z) return false;
+        if(speed.z <= 0 && otherSpd.z < speed.z && otherPos.z < pos.z) return false;
+        if(speed.z >= 0 && otherSpd.z < speed.z && otherPos.z < pos.z) return false;
+        if(speed.z >= 0 && otherSpd.z > speed.z && otherPos.z > pos.z) return false;
 
         float destination = pos.z - tol;
 
@@ -40,7 +45,8 @@ public class CrashCallculator : MonoBehaviour
 
         float crashPos = otherPos.z + timeNeeded * otherSpd.z;
 
-        if(crashPos > endPos.z) return true;
+        if(speed.z >= 0 && crashPos < endPos.z) return true;
+        else if(speed.z <= 0 && crashPos > endPos.z) return true;
         else{
             return false;
         }
@@ -52,9 +58,13 @@ public class CrashCallculator : MonoBehaviour
 
         Vector3 otherPos = otherVehicle.transform.position;
         Vector3 otherSpd = otherVehicle.GetComponent<Movement>().speed;
-        
-        if(otherSpd.z < speed.z && otherPos.z < pos.z) return false;
-        if(otherSpd.z > speed.z && otherPos.z > pos.z) return false;
+        if(speed.z < 0){
+            tol *= -1;
+        }
+        if(speed.z <= 0 && otherSpd.z > speed.z && otherPos.z > pos.z) return false;
+        if(speed.z <= 0 && otherSpd.z < speed.z && otherPos.z < pos.z) return false;
+        if(speed.z >= 0 && otherSpd.z < speed.z && otherPos.z < pos.z) return false;
+        if(speed.z >= 0 && otherSpd.z > speed.z && otherPos.z > pos.z) return false;
 
         float destination = pos.z - tol;
 
@@ -65,19 +75,25 @@ public class CrashCallculator : MonoBehaviour
 
         float crashPos = otherPos.z + timeNeeded * otherSpd.z;
 
-        if(crashPos > endPos.z) return true;
+        if(speed.z >= 0 && crashPos < endPos.z) return true;
+        else if(speed.z <= 0 && crashPos > endPos.z) return true;
         else{
             return false;
         }
     }
 
     public bool isCrash(GameObject curVehicle, Vector3 otherPos, Vector3 otherSpd, Vector3 endPos, float tol = 15f){
+        
+        
         Vector3 pos = curVehicle.transform.position;
         Vector3 speed = curVehicle.GetComponent<Movement>().speed;
-
-        
-        if(otherSpd.z < speed.z && otherPos.z < pos.z) return false;
-        if(otherSpd.z > speed.z && otherPos.z > pos.z) return false;
+        if(speed.z < 0){
+            tol *= -1;
+        }
+        if(speed.z <= 0 && otherSpd.z > speed.z && otherPos.z > pos.z) return false;
+        if(speed.z <= 0 && otherSpd.z < speed.z && otherPos.z < pos.z) return false;
+        if(speed.z >= 0 && otherSpd.z < speed.z && otherPos.z < pos.z) return false;
+        if(speed.z >= 0 && otherSpd.z > speed.z && otherPos.z > pos.z) return false;
 
         float destination = pos.z - tol;
 
@@ -88,7 +104,8 @@ public class CrashCallculator : MonoBehaviour
 
         float crashPos = otherPos.z + timeNeeded * otherSpd.z;
 
-        if(crashPos < endPos.z) return true;
+        if(speed.z >= 0 && crashPos < endPos.z) return true;
+        else if(speed.z <= 0 && crashPos > endPos.z) return true;
         else{
             return false;
         }
