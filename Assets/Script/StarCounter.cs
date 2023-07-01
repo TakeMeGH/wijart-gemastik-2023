@@ -3,24 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StarHandler : MonoBehaviour
-{
-        [SerializeField] public Image starOne;
-        [SerializeField] public Image starTwo;
-        [SerializeField] public Image starThree;
-        
-        public int tempScore;
 
-        int score;
+public class StarCounter : MonoBehaviour
+{
+        [SerializeField] public GameObject starOne;
+        [SerializeField] public GameObject starTwo;
+        [SerializeField] public GameObject starThree;
+
+        Animation anim;
+        bool conditionZero;
+
+        public bool firstCondition;
+        public bool secondCondition;
+        public bool thirdCondition;
 
     // Start is called before the first frame update
     void Start()
     {
-        score = 0;
+        anim = gameObject.GetComponent<Animation>();
 
-        starOne.enabled = false;
-        starTwo.enabled = false;
-        starThree.enabled = false;
+        conditionZero = false;
+        firstCondition = false;
+        secondCondition = false;
+        thirdCondition = false;
+
+        starOne.SetActive(false);
+        starTwo.SetActive(false);
+        starThree.SetActive(false);
     }
 
     // Update is called once per frame
@@ -30,14 +39,28 @@ public class StarHandler : MonoBehaviour
     }
 
     void setScore() {
-        if(score == 1) {
-            starOne.enabled = true;
+        if(conditionZero) {
+            starOne.SetActive(false);
+            starTwo.SetActive(false);
+            starThree.SetActive(false);
         }
-        if(score == 2) {
-            starTwo.enabled = true;
+        if(firstCondition) {
+            starOne.SetActive(true);
+        } else
+        {
+            starOne.SetActive(false);
         }
-        if(score == 3) {
-            starThree.enabled = true;
+        if(secondCondition) {
+            starTwo.SetActive(true);
+        } else
+        {
+            starTwo.SetActive(false);
+        }
+        if(thirdCondition) {
+            starThree.SetActive(true);
+        } else
+        {
+            starThree.SetActive(false);
         }
     }
 }
