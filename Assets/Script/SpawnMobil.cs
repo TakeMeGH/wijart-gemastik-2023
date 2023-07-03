@@ -54,10 +54,22 @@ public class SpawnMobil : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        int flag = 0;
+        for(int i = 0; i < curObject.Count; i++){
+            if(curObject[i] != null){
+                flag = 1;
+                break;
+            }
+        }
+        if(flag == 0 && GoalController.Instance.isFinished()){
+            Destroy(gameObject);
+        }
     }
 
     void spawnRandomCar(){
+        if(GoalController.Instance.isFinished()){
+            return;
+        }
         if(counterStandardCar == 0){
             spawnSpecialCar();
             return;
@@ -123,7 +135,7 @@ public class SpawnMobil : MonoBehaviour
                 flag += 2;
             }
             if(flag == 3){
-                GameObject curEvent = Instantiate(listEvent, transform);
+                GameObject curEvent = Instantiate(listEvent, transform.position, transform.rotation);
                 MobilUgal ugalScript = curEvent.GetComponent<MobilUgal>();
                 
                 int randomCar = Random.Range(0, spawnableObject.Count);

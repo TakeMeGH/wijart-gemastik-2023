@@ -39,10 +39,11 @@ public class MobilFlash : MonoBehaviour
 
     public void clicked(){
         if(clickRoutine == null){
-            if(categoryPenalty.curObjectPenalty == CategoryPenalty.Penalty.noPenalty){
+            int ret = GoalController.Instance.clickCar(categoryPenalty.curObjectPenalty);
+            if(ret == 0){
                 clickRoutine = StartCoroutine(changeMaterial(wrongArray));
             }
-            else if(firstCorrect == false){
+            else if(ret == 1 && firstCorrect == false){
                 firstCorrect = true;
                 clickRoutine = StartCoroutine(changeMaterial(correctArray));
             }
