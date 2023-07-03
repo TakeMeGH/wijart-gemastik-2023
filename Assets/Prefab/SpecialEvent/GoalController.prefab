@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8738417125401702434
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8294524360399927298}
+  - component: {fileID: 8296239504287745209}
+  m_Layer: 0
+  m_Name: GoalController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8294524360399927298
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8738417125401702434}
+  m_LocalRotation: {x: 0.21458186, y: 0.54007566, z: -0.14471278, w: 0.8008316}
+  m_LocalPosition: {x: -62.1, y: 47.1, z: 90.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8296239504287745209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8738417125401702434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83cd7d0f9f6209479142f5ed34bfaf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goal:
+  - goalText: Mobil Ugal
+    penaltyCategory: 2
+    numbOfPenalty: 1
+    curNumbOfPenalty: 0
+  - goalText: Mobil Salib
+    penaltyCategory: 1
+    numbOfPenalty: 0
+    curNumbOfPenalty: 0
+  - goalText: Mobil Lambat
+    penaltyCategory: 3
+    numbOfPenalty: 0
+    curNumbOfPenalty: 0
+  goalFinish: 0

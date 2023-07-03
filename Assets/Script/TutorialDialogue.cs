@@ -8,6 +8,7 @@ public class TutorialDialogue : MonoBehaviour
     public List<Dialogue> listDialogue = new List<Dialogue>();
     [SerializeField] TMP_Text textDialogue;
     [SerializeField] GameObject clickText;
+    [SerializeField] TutorialController tutorial;
     int idx = 0;
     Coroutine showTextCoroutine;
     // Start is called before the first frame update
@@ -24,7 +25,12 @@ public class TutorialDialogue : MonoBehaviour
 
     public void nextDialogue(){
         if(showTextCoroutine == null){
-            showTextCoroutine = StartCoroutine(showText());
+            if(idx == listDialogue.Count){
+                tutorial.startGame();
+            }
+            else{
+                showTextCoroutine = StartCoroutine(showText());
+            }
         }
     }
 
@@ -32,19 +38,38 @@ public class TutorialDialogue : MonoBehaviour
         textDialogue.text = "";
         clickText.SetActive(false);
         for(int i = 0; i < listDialogue[idx].textDialougue.Length; i++){
-            Debug.Log(listDialogue[idx].textDialougue[i]);
             textDialogue.text += listDialogue[idx].textDialougue[i];
             yield return new WaitForSeconds(0.05f);
         }
-        clickText.SetActive(true);
-        idx++;
-        showTextCoroutine = null;
+        if(listDialogue[idx].choosenAction == eventOption.callTutorial){
+            tutorial.startTutorial();
+            yield return new WaitForSeconds(2f);
+            idx++;
+            showTextCoroutine = null;
+            nextDialogue();
+        }
+        else if(listDialogue[idx].choosenAction == eventOption.normalButton){
+            clickText.SetActive(true);
+            idx++;
+            showTextCoroutine = null;
+        }
+        else if(listDialogue[idx].choosenAction == eventOption.waitClick){
+            idx++;
+            showTextCoroutine = null;
+        }
+        
+    }
+    public void setClickTextCondition(bool condition){
+        clickText.SetActive(condition);
     }
 }
+
+
 [System.Serializable]
 public enum eventOption{
     normalButton,
-    callTutorial
+    callTutorial,
+    waitClick
 }
 
 [System.Serializable]
