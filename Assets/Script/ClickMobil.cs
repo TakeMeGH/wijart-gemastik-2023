@@ -20,6 +20,15 @@ public class ClickMobil : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(cameraUI == null || !cameraUI.isActiveAndEnabled){
+            GameObject temp = GameObject.FindGameObjectWithTag("CameraUI");
+            if(temp != null){
+                cameraUI = temp.GetComponent<UIFlash>();
+            }
+            if(cameraUI == null || !cameraUI.isActiveAndEnabled){
+                Cursor.visible = true;
+            }
+        }
         Vector2 mousePos = Input.mousePosition;
         curRecaptureTime -= Time.deltaTime;
         if (curRecaptureTime < 0 && Input.GetMouseButtonDown(0)){
