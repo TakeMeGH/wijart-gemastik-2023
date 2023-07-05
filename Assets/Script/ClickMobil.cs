@@ -33,7 +33,6 @@ public class ClickMobil : MonoBehaviour
         curRecaptureTime -= Time.deltaTime;
         if (curRecaptureTime < 0 && Input.GetMouseButtonDown(0)){
             _ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
-            Debug.Log(_mainCamera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, _mainCamera.nearClipPlane)));
             if (Physics.Raycast(_ray, out _hit, Mathf.Infinity, _myLayerMask))
             {
                 if (_hit.transform.gameObject.tag == "mobil")

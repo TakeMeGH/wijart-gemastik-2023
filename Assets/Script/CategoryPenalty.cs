@@ -9,7 +9,8 @@ public class CategoryPenalty : MonoBehaviour
      noPenalty,
      Salip,
      Ugal,
-     Lambat
+     Lambat,
+     Terobos
     }
 
     public Penalty curObjectPenalty;
