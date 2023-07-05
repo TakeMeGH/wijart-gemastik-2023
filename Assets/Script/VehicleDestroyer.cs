@@ -17,7 +17,7 @@ public class VehicleDestroyer : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        if(other.gameObject.tag == "mobil"){
+        if(other.gameObject.tag == "mobil" || other.gameObject.tag == "kereta"){
             Destroy(other.gameObject);
         }
     }

@@ -27,13 +27,20 @@ public class UIFlash : MonoBehaviour
     }
 
     IEnumerator flash(){
-        Color temp = curImage.color;
-        temp.a = 0.5f;
-        curImage.material = flashCamera;
-        curImage.color = temp;
-        yield return new WaitForSecondsRealtime(3f);
-        curImage.material = originalMaterial;
-        temp.a = 1;
-        curImage.color = temp;
+        for(int i = 0; i < 10; i++){
+            Color temp = curImage.color;
+            if(i % 2 == 0){
+                temp.a = 0.5f;
+                curImage.material = flashCamera;
+                curImage.color = temp;
+            }
+            else{
+                curImage.material = originalMaterial;
+                temp.a = 1;
+                curImage.color = temp;
+            }
+            yield return new WaitForSecondsRealtime(0.15f);
+        }
+      
     }
 }

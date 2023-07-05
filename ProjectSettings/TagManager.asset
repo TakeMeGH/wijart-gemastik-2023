@@ -6,6 +6,7 @@ TagManager:
   tags:
   - mobil
   - CameraUI
+  - kereta
   layers:
   - Default
   - TransparentFX
