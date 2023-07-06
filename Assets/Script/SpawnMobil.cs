@@ -11,6 +11,8 @@ public class SpawnMobil : MonoBehaviour
     public List<GameObject> spawnableObject;
     public List<GameObject> smallCar;
     public List<GameObject> bigCar;
+    public List<GameObject> openCar;
+
     [Header("Spawned Car")]
     public List<GameObject> curObject;
     public List<bool> isSpecialEvent;
@@ -23,6 +25,8 @@ public class SpawnMobil : MonoBehaviour
     [SerializeField] bool mobilSalip;
     [SerializeField] bool MobilUgal;
     [SerializeField] bool mobilBesarPadaJalurCepat;
+    [SerializeField] bool mobilCepat;
+    [SerializeField] bool mobilRoofLess;
     [SerializeField] float spawnInterval = 2f;
     public List<bool> isFastTrack;
     [Header("Special Event Prefab")]
@@ -40,6 +44,10 @@ public class SpawnMobil : MonoBehaviour
         if(mobilSalip) listSpecialEvent.Add(1);
         if(MobilUgal) listSpecialEvent.Add(2);
         if(mobilBesarPadaJalurCepat) listSpecialEvent.Add(3);
+        if(mobilCepat) listSpecialEvent.Add(4);
+        if(mobilRoofLess) listSpecialEvent.Add(5);
+
+
 
         isSpecialEvent = new List<bool>(new bool[startPos.Count]);
         curObject = new List<GameObject>();
@@ -93,19 +101,22 @@ public class SpawnMobil : MonoBehaviour
             !CrashCallculator.Instance.isCrash(curObject[randomPos], 
             startPos[randomPos].position, new Vector3(0, 0, randomSpeed), endPos[randomPos].position))
         {
-            StartCoroutine(customInstantiateCar(randomPos, choosenCar, randomSpeed));
+            StartCoroutine(customInstantiateCar(randomPos, choosenCar, randomSpeed, isFastTrack[randomPos]));
 
         }
     }
-    IEnumerator customInstantiateCar(int posIdx, GameObject choosenCar, float speed, CategoryPenalty.Penalty carPenalty = CategoryPenalty.Penalty.noPenalty){
+    IEnumerator customInstantiateCar(int posIdx, GameObject choosenCar, float speed, bool fastParticle, CategoryPenalty.Penalty carPenalty = CategoryPenalty.Penalty.noPenalty){
         GameObject spawnedCar = Instantiate(choosenCar, 
             startPos[posIdx].position, startPos[posIdx].rotation);
-
+        if(fastParticle){
+            spawnedCar.GetComponent<FastParticleController>().enableFastParticle();
+        }
         spawnedCar.GetComponent<CategoryPenalty>().curObjectPenalty = carPenalty;
         spawnedCar.GetComponent<Movement>().speed.z = speed;
         curObject[posIdx] = spawnedCar;
         yield return new WaitForSeconds(1f);
         spawnedCar.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
+        
         spawnedCar.transform.position += new Vector3(0, spawnOffsetY, 0);
     }
 
@@ -203,7 +214,14 @@ public class SpawnMobil : MonoBehaviour
             }
         }
         else if(randomSpecial == 3){
-            int randomPos = Random.Range(0, startPos.Count);
+            List<int> availPos = new List<int>();
+            for(int i = 0; i < startPos.Count; i++){
+                if(isFastTrack[i]){
+                    availPos.Add(i);
+                }
+            }
+            int randomPos = Random.Range(0, availPos.Count);
+            randomPos = availPos[randomPos];
             int flag = 0;
             float randomSpeed = Random.Range(lowerBoundSpd, upperBoundSpd);
 
@@ -217,7 +235,36 @@ public class SpawnMobil : MonoBehaviour
                 int randomCar = Random.Range(0, bigCar.Count);
                 GameObject choosenCar = bigCar[randomCar];
                 StartCoroutine(customInstantiateCar(randomPos, 
-                    choosenCar, randomSpeed, CategoryPenalty.Penalty.Lambat));
+                    choosenCar, randomSpeed, false, CategoryPenalty.Penalty.Lambat));
+            }
+            else{
+                return;
+            }
+        }
+        else if(randomSpecial == 4){
+            List<int> availPos = new List<int>();
+            for(int i = 0; i < startPos.Count; i++){
+                if(isFastTrack[i] == false){
+                    availPos.Add(i);
+                }
+            }
+            int randomPos = Random.Range(0, availPos.Count);
+            randomPos = availPos[randomPos];
+            int flag = 0;
+            float randomSpeed = Random.Range(lowerBoundSpd, upperBoundSpd);
+            randomSpeed += extraSpeed;
+
+            if(curObject[randomPos] == null ||
+            !CrashCallculator.Instance.isCrash(curObject[randomPos], 
+            startPos[randomPos].position, new Vector3(0, 0, randomSpeed), endPos[randomPos].position)){
+                flag += 1;
+            }
+
+            if(flag == 1){
+                int randomCar = Random.Range(0, spawnableObject.Count);
+                GameObject choosenCar = spawnableObject[randomCar];
+                StartCoroutine(customInstantiateCar(randomPos, 
+                    choosenCar, randomSpeed, true, CategoryPenalty.Penalty.Cepat));
             }
             else{
                 return;

@@ -2,21 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CategoryPenalty : MonoBehaviour
+public class FastParticleController : MonoBehaviour
 {
-    public enum Penalty
-    {
-     noPenalty,
-     Salip,
-     Ugal,
-     Lambat,
-     Terobos,
-     Cepat,
-     RoofLess
-    }
 
-    public Penalty curObjectPenalty;
-
+    [SerializeField] GameObject fastParticle;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,5 +16,9 @@ public class CategoryPenalty : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void enableFastParticle(){
+        fastParticle.SetActive(true);
     }
 }
