@@ -6,30 +6,31 @@ using System;
 
 public class Timer : MonoBehaviour
 {
-    bool timerActive = false;
-    float currentTime;
-    public int startMinutes;
-    public Text currentTimeText;
+    public float currentTime;
+    public static Timer Instance { get; private set; }
 
+    private void Awake()
+    {
+
+        if (Instance != null && Instance != this)
+        {
+        Destroy(gameObject);
+        }
+        else
+        {
+        Instance = this;
+        }
+
+    }
     // Start is called before the first frame update
     void Start()
     {
-        currentTime = startMinutes * 60;
-        timerActive = true;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(timerActive == true) {
-            currentTime = currentTime - Time.deltaTime;
-            if(currentTime <= 0) {
-                timerActive = false;
-                Start();
-                Debug.Log("timer finished");
-            }
-        }
-        TimeSpan time = TimeSpan.FromSeconds(currentTime);
-        currentTimeText.text = time.Minutes.ToString() + ":" + time.Seconds.ToString();
+        currentTime += Time.deltaTime;
     }
 }

@@ -22,10 +22,10 @@ public class StarCounter : MonoBehaviour
     {
         anim = gameObject.GetComponent<Animation>();
 
-        conditionZero = false;
-        firstCondition = false;
-        secondCondition = false;
-        thirdCondition = false;
+        // conditionZero = false;
+        // firstCondition = false;
+        // secondCondition = false;
+        // thirdCondition = false;
 
         starOne.SetActive(false);
         starTwo.SetActive(false);
@@ -44,13 +44,13 @@ public class StarCounter : MonoBehaviour
             starTwo.SetActive(false);
             starThree.SetActive(false);
         }
-        if(firstCondition) {
+        if(firstCondition || secondCondition || thirdCondition) {
             starOne.SetActive(true);
         } else
         {
             starOne.SetActive(false);
         }
-        if(secondCondition) {
+        if(secondCondition || thirdCondition) {
             starTwo.SetActive(true);
         } else
         {
