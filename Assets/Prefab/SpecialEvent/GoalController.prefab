@@ -61,4 +61,12 @@ MonoBehaviour:
     penaltyCategory: 4
     numbOfPenalty: 0
     curNumbOfPenalty: 0
+  - goalText: Mobil Ngebut pada jalur lambat
+    penaltyCategory: 5
+    numbOfPenalty: 0
+    curNumbOfPenalty: 0
+  - goalText: Mobil Tanpa Atap
+    penaltyCategory: 6
+    numbOfPenalty: 0
+    curNumbOfPenalty: 0
   goalFinish: 0
