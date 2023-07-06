@@ -126,7 +126,6 @@ public class SpawnMobil : MonoBehaviour
             return;
         }
         int randomSpecialIdx = Random.Range(0, listSpecialEvent.Count);
-
         int randomSpecial = listSpecialEvent[randomSpecialIdx];
 
         if(randomSpecial == 2){

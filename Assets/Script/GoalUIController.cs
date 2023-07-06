@@ -40,7 +40,6 @@ public class GoalUIController : MonoBehaviour
             Goal curGoal = GoalController.Instance.getGoal(queueUI[i].penalty);
             logo[idx].sprite = queueUI[i].gambarPenalty;
             fillImage[idx].fillAmount = ((float)curGoal.curNumbOfPenalty / (float)curGoal.numbOfPenalty);
-            Debug.Log(idx + " " + curGoal.numbOfPenalty + " " + curGoal.curNumbOfPenalty);
         }
     }
 }

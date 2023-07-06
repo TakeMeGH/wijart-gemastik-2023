@@ -88,8 +88,7 @@ public class SceneHandler : MonoBehaviour
   public bool PreviousScene()
   {
     bool returnValue = false;
-    Debug.Log(sceneHistory.Capacity);
-
+    Debug.Log(sceneHistory.Count);
     if (sceneHistory.Count >= 1)  //Checking that we have actually switched scenes enough to go back to a previous scene
     {
       returnValue = true;

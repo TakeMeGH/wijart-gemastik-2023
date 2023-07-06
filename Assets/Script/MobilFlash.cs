@@ -39,22 +39,27 @@ public class MobilFlash : MonoBehaviour
 
     public void clicked(){
         if(clickRoutine == null){
-            int ret = GoalController.Instance.clickCar(categoryPenalty.curObjectPenalty);
-            if(ret == 0){
-                clickRoutine = StartCoroutine(changeMaterial(wrongArray));
-                if(ScoreController.Instance != null){
-                    ScoreController.Instance.missClick();
-                }
-            }
-            else if(ret == 1 && firstCorrect == false){
-                firstCorrect = true;
-                clickRoutine = StartCoroutine(changeMaterial(correctArray));
-                if(ScoreController.Instance != null){
-                    ScoreController.Instance.correctClick();
-                }
+            if(firstCorrect == true){
+                clickRoutine = StartCoroutine(changeMaterial(netralArray));
             }
             else{
-                clickRoutine = StartCoroutine(changeMaterial(netralArray));
+                int ret = GoalController.Instance.clickCar(categoryPenalty.curObjectPenalty);
+                if(ret == 0){
+                    clickRoutine = StartCoroutine(changeMaterial(wrongArray));
+                    if(ScoreController.Instance != null){
+                        ScoreController.Instance.missClick();
+                    }
+                }
+                else if(ret == 1 && firstCorrect == false){
+                    firstCorrect = true;
+                    clickRoutine = StartCoroutine(changeMaterial(correctArray));
+                    if(ScoreController.Instance != null){
+                        ScoreController.Instance.correctClick();
+                    }
+                }
+                else if(ret == -1){
+                    clickRoutine = StartCoroutine(changeMaterial(netralArray));
+                }
             }
         }
     }
