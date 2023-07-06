@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VehicleDestroyer : MonoBehaviour
+public class SelectLevel : MonoBehaviour
 {
+    [SerializeField] GameObject selectMenu;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,9 +17,8 @@ public class VehicleDestroyer : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other) {
-        if(other.gameObject.tag == "mobil" || other.gameObject.tag == "kereta" || other.gameObject.tag == "orang"){
-            Destroy(other.gameObject);
-        }
+    public void activateSelectMenu(){
+        selectMenu.SetActive(true);
+        gameObject.SetActive(false);
     }
 }

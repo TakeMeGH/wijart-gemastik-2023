@@ -62,6 +62,15 @@ public class GoalController : MonoBehaviour
         }
         return true;
     }
+
+    public Goal getGoal(CategoryPenalty.Penalty penalty){
+        for(int i = 0; i < goal.Count; i++){
+            if(penalty == goal[i].penaltyCategory){
+                return goal[i];
+            }
+        }
+        return null;
+    }
 }
 
 

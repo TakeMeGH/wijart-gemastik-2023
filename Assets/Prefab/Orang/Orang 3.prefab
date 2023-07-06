@@ -376,7 +376,7 @@ GameObject:
   - component: {fileID: 656591327615986079}
   m_Layer: 0
   m_Name: Orang 3
-  m_TagString: Untagged
+  m_TagString: orang
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -440,6 +440,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: {x: 0, y: 0, z: 5}
+  stoped: 0
 --- !u!95 &4533150134579729844
 Animator:
   serializedVersion: 5
