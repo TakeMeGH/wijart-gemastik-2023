@@ -32,9 +32,20 @@ public class TutorialDialogue : MonoBehaviour
                 showTextCoroutine = StartCoroutine(showText());
             }
         }
+        else{
+            StopCoroutine(showTextCoroutine);
+            idx++;
+            if(idx == listDialogue.Count){
+                tutorial.startGame();
+            }
+            else{
+                showTextCoroutine = StartCoroutine(showText());
+            }
+        }
     }
 
     IEnumerator showText(){
+        listDialogue[idx].textDialougue = listDialogue[idx].textDialougue.Trim();
         textDialogue.text = "";
         clickText.SetActive(false);
         for(int i = 0; i < listDialogue[idx].textDialougue.Length; i++){

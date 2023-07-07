@@ -90,6 +90,8 @@ MonoBehaviour:
   mobilSalip: 1
   MobilUgal: 0
   mobilBesarPadaJalurCepat: 0
+  mobilCepat: 0
+  mobilRoofLess: 0
   spawnInterval: 2
   isFastTrack: 00000000000000000000
   listEvent: {fileID: 7248162291673721622}
@@ -140,7 +142,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 15, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2486840188995045108
 MonoBehaviour:

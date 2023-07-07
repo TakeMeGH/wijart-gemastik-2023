@@ -12422,7 +12422,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 15, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &248499412
 PrefabInstance:
@@ -12565,7 +12565,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 15, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &250992611 stripped
 Transform:
@@ -29723,6 +29723,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 2486840188995045115, guid: 7753166ad75d44945a8d977bb5cffcd9,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 2486840189307955483, guid: 7753166ad75d44945a8d977bb5cffcd9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -33536,7 +33541,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &668961588
 Transform:
   m_ObjectHideFlags: 0
@@ -33568,7 +33573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abeb5140b193d4148b21348f281b8830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mobilUgal: 2
+  mobilUgal: 10
   mobilSalip: 0
   mobilLambat: 0
   mobilCepat: 0
@@ -46105,7 +46110,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &927053614
 Transform:
   m_ObjectHideFlags: 0
@@ -55872,7 +55877,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 15, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1119328758
 PrefabInstance:
@@ -78823,7 +78828,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_TargetDisplay: 0
 --- !u!1001 &1582492453
 PrefabInstance:
@@ -79397,7 +79402,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 15, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1601912152
 PrefabInstance:
@@ -101101,7 +101106,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 15, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2053902336
 PrefabInstance:
@@ -106531,6 +106536,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: -35
+      objectReference: {fileID: 0}
+    - target: {fileID: 2486840188995045115, guid: 7753166ad75d44945a8d977bb5cffcd9,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2486840189307955483, guid: 7753166ad75d44945a8d977bb5cffcd9,
         type: 3}
