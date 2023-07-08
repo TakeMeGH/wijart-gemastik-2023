@@ -14,7 +14,15 @@ public class TimerUIController : MonoBehaviour
         if(onlyFirstTime){
             int minute = (int)Timer.Instance.currentTime / 60;
             int second = (int)Timer.Instance.currentTime % 60;
-            text.text = minute.ToString() + ":" + second.ToString();
+            string firstString = minute.ToString();
+            if(minute < 10){
+                firstString = "0" + firstString;
+            }
+            string lastString = second.ToString();
+            if(second < 10){
+                lastString = "0" + lastString;
+            }
+            text.text = firstString + ":" + lastString;
         }
     }
 
@@ -24,6 +32,14 @@ public class TimerUIController : MonoBehaviour
         if(onlyFirstTime) return;
         int minute = (int)Timer.Instance.currentTime / 60;
         int second = (int)Timer.Instance.currentTime % 60;
-        text.text = minute.ToString() + ":" + second.ToString();
+        string firstString = minute.ToString();
+        if(minute < 10){
+            firstString = "0" + firstString;
+        }
+        string lastString = second.ToString();
+        if(second < 10){
+            lastString = "0" + lastString;
+        }
+        text.text = firstString + ":" + lastString;
     }
 }

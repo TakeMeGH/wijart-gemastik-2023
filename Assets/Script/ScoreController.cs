@@ -1,10 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ScoreController : MonoBehaviour
 {
     public int currentScore;
+    [SerializeField] int minCorrectScore;
+    [SerializeField] int maxCorrectScore;
+    [SerializeField] int minWrongScore;
+    [SerializeField] int maxWrongScore;
+    [SerializeField] ScoreAdder scoreAdder;
+
     public static ScoreController Instance { get; private set; }
 
     private void Awake()
@@ -33,10 +40,13 @@ public class ScoreController : MonoBehaviour
     }
 
     public void correctClick(){
-        currentScore += 5;
+        int value = Random.Range(minCorrectScore, maxCorrectScore + 1);
+        scoreAdder.addScore(value, true);
     }
 
     public void missClick(){
-        currentScore -= 3;
+        int value = Random.Range(minWrongScore, maxWrongScore + 1);
+        scoreAdder.addScore(value, false);
+
     }
 }

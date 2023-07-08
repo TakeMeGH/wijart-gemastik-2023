@@ -7,6 +7,7 @@ public class TutorialController : MonoBehaviour
     [SerializeField] GameObject waveSpawner;
     [SerializeField] TutorialDialogue tutorialDialogue;
     [SerializeField] GameObject inGame;
+    bool isStartGame;
     bool tutorialStarted;
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,9 @@ public class TutorialController : MonoBehaviour
     {
         if(tutorialStarted == true && GoalController.Instance.isFinished()){
             endTutorial();
+        }
+        if(isStartGame){
+            startGame();
         }
     }
 
@@ -36,7 +40,11 @@ public class TutorialController : MonoBehaviour
     }
 
     public void startGame(){
-        inGame.SetActive(true);
-        gameObject.SetActive(false);
+        isStartGame = true;
+        if(waveSpawner.transform.childCount == 0){
+            inGame.SetActive(true);
+            gameObject.SetActive(false);
+        }
+        
     }
 }

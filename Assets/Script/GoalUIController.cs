@@ -25,6 +25,7 @@ public class GoalUIController : MonoBehaviour
             Goal curUI = GoalController.Instance.getGoal(queueUI[i].penalty);
             if(curUI.curNumbOfPenalty == curUI.numbOfPenalty){
                 for(int j = queueUI.Count - 1; j > i; j--){
+                    Debug.Log(i + " " + j);
                     Goal nextUI = GoalController.Instance.getGoal(queueUI[j].penalty);
                     if(nextUI.curNumbOfPenalty != nextUI.numbOfPenalty){
                         goalUI temp = queueUI[i];
@@ -37,10 +38,32 @@ public class GoalUIController : MonoBehaviour
         }
         for(int i = showenIdx; i < showenIdx + numShowenImage; i++){
             int idx = i - showenIdx;
-            Goal curGoal = GoalController.Instance.getGoal(queueUI[i].penalty);
-            logo[idx].sprite = queueUI[i].gambarPenalty;
+            int UIIdx = i % queueUI.Count;
+            Goal curGoal = GoalController.Instance.getGoal(queueUI[UIIdx].penalty);
+            logo[idx].sprite = queueUI[UIIdx].gambarPenalty;
             fillImage[idx].fillAmount = ((float)curGoal.curNumbOfPenalty / (float)curGoal.numbOfPenalty);
+            if(curGoal.curNumbOfPenalty == curGoal.numbOfPenalty){
+                Color tempColor = logo[idx].color;
+                tempColor.a = 0.1f;
+                logo[idx].color = tempColor;
+            }
+            else{
+                Color tempColor = logo[idx].color;
+                tempColor.a = 1f;
+                logo[idx].color = tempColor;
+            }
+        
         }
+    }
+
+    public void nextIdx(){
+        showenIdx++;
+        showenIdx %= queueUI.Count;
+    }
+
+    public void prevIdx(){
+        showenIdx--;
+        showenIdx = (showenIdx + queueUI.Count) % queueUI.Count;
     }
 }
 

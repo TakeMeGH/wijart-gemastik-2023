@@ -59,4 +59,9 @@ public class SceneCaller : MonoBehaviour
         sceneHandler = GameObject.FindGameObjectWithTag("SceneHandler").GetComponent<SceneHandler>();
         sceneHandler.restartButton();
     }
+
+    public void nextScene(){
+        sceneHandler = GameObject.FindGameObjectWithTag("SceneHandler").GetComponent<SceneHandler>();
+        sceneHandler.loadNextLevel();
+    }
 }

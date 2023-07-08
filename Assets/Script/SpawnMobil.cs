@@ -31,13 +31,14 @@ public class SpawnMobil : MonoBehaviour
     public List<bool> isFastTrack;
     [Header("Special Event Prefab")]
     [SerializeField] GameObject listEvent;
-    List<int> listSpecialEvent = new List<int>();
+    public List<int> listSpecialEvent = new List<int>();
     [Header("Extra spacing to car")]
     [SerializeField] float spawnOffsetY;
     [Header("Interval to Special Event")]
     [SerializeField] int minCarCounter;
     [SerializeField] int maxCarCounter;
     int counterStandardCar = 0;    
+    List<int> originalList = new List<int>();
     // Start is called before the first frame update
     void Start()
     {
@@ -47,7 +48,11 @@ public class SpawnMobil : MonoBehaviour
         if(mobilCepat) listSpecialEvent.Add(4);
         if(mobilRoofLess) listSpecialEvent.Add(5);
 
+        originalList = new List<int>(listSpecialEvent);
 
+        for(int i = 0; i < 1; i++){
+            listSpecialEvent.AddRange(originalList);
+        }
 
         isSpecialEvent = new List<bool>(new bool[startPos.Count]);
         curObject = new List<GameObject>();
@@ -125,23 +130,79 @@ public class SpawnMobil : MonoBehaviour
             counterStandardCar = Random.Range(minCarCounter, maxCarCounter + 1);
             return;
         }
+        // List<int> availEvent = new List<int>();
+        // for(int i = 0; i < listSpecialEvent.Count; i++){
+        //     if(listSpecialEvent[i] == 1){
+        //         Goal curGoal = GoalController.Instance.getGoal(CategoryPenalty.Penalty.Salip);
+        //         if(curGoal.curNumbOfPenalty < curGoal.numbOfPenalty){
+        //             availEvent.Add(i);
+        //         }
+        //     }
+
+        //     if(listSpecialEvent[i] == 2){
+        //         Goal curGoal = GoalController.Instance.getGoal(CategoryPenalty.Penalty.Ugal);
+        //         if(curGoal.curNumbOfPenalty < curGoal.numbOfPenalty){
+        //             availEvent.Add(i);
+        //         }
+        //     }
+
+        //     if(listSpecialEvent[i] == 3){
+        //         Goal curGoal = GoalController.Instance.getGoal(CategoryPenalty.Penalty.Lambat);
+        //         if(curGoal.curNumbOfPenalty < curGoal.numbOfPenalty){
+        //             availEvent.Add(i);
+        //         }
+        //     }
+
+        //     if(listSpecialEvent[i] == 4){
+        //         Goal curGoal = GoalController.Instance.getGoal(CategoryPenalty.Penalty.Cepat);
+        //         if(curGoal.curNumbOfPenalty < curGoal.numbOfPenalty){
+        //             availEvent.Add(i);
+        //         }
+        //     }
+
+        //     if(listSpecialEvent[i] == 5){
+        //         Goal curGoal = GoalController.Instance.getGoal(CategoryPenalty.Penalty.RoofLess);
+        //         if(curGoal.curNumbOfPenalty < curGoal.numbOfPenalty){
+        //             availEvent.Add(i);
+        //         }
+        //     }
+
+        // }
+
         int randomSpecialIdx = Random.Range(0, listSpecialEvent.Count);
         int randomSpecial = listSpecialEvent[randomSpecialIdx];
+
+        // if(availEvent.Count >= 1){
+        //     randomSpecialIdx = Random.Range(0, availEvent.Count);
+
+        //     randomSpecialIdx = availEvent[randomSpecialIdx];
+        //     randomSpecial = listSpecialEvent[randomSpecialIdx];
+        // }
 
         if(randomSpecial == 2){
             int randomPos = Random.Range(0, startPos.Count - 1);
             float randomSpeed = Random.Range(lowerBoundSpd, upperBoundSpd);
+            int reverseWay = 1;
+            if(isFastTrack[randomPos]){
+                randomSpeed += extraSpeed;
+            }
+            if(startPos[randomPos].transform.localEulerAngles.y == 180){
+                reverseWay = -1;
+            }
+            if(isFastTrack[randomPos]){
+                randomSpeed += extraSpeed;
+            }
             int flag = 0;
             if(curObject[randomPos] == null ||
             !CrashCallculator.Instance.isCrash(curObject[randomPos], 
-            startPos[randomPos].position, new Vector3(0, 0, randomSpeed + 5), endPos[randomPos].position)){
+            startPos[randomPos].position, new Vector3(0, 0, randomSpeed + 5 * reverseWay), endPos[randomPos].position)){
                 flag += 1;
             }
 
             randomPos += 1;
             if(curObject[randomPos] == null ||
                 !CrashCallculator.Instance.isCrash(curObject[randomPos], 
-                startPos[randomPos].position, new Vector3(0, 0, randomSpeed + 5), endPos[randomPos].position)){
+                startPos[randomPos].position, new Vector3(0, 0, randomSpeed + 5 * reverseWay), endPos[randomPos].position)){
                 flag += 2;
             }
             if(flag == 3){
@@ -150,6 +211,7 @@ public class SpawnMobil : MonoBehaviour
                 
                 int randomCar = Random.Range(0, spawnableObject.Count);
                 ugalScript.carModel = spawnableObject[randomCar];
+                ugalScript.isFast = isFastTrack[randomPos];
 
                 int dir = Random.Range(0, 2);
                 if(dir == 1){
@@ -174,23 +236,33 @@ public class SpawnMobil : MonoBehaviour
 
             int randomPos = Random.Range(0, startPos.Count - 1);
             float randomSpeed = Random.Range(lowerBoundSpd, upperBoundSpd);
-
+            int reverseWay = 1;
+            if(isFastTrack[randomPos]){
+                randomSpeed += extraSpeed;
+            }
+            if(startPos[randomPos].transform.localEulerAngles.y == 180){
+                reverseWay = -1;
+            }
             int flag = 0;
             if(curObject[randomPos] == null ||
             !CrashCallculator.Instance.isCrash(curObject[randomPos], 
-            startPos[randomPos].position, new Vector3(0, 0, randomSpeed + 5), endPos[randomPos].position)){
+            startPos[randomPos].position, new Vector3(0, 0, randomSpeed + 5 * reverseWay), endPos[randomPos].position)){
                 flag += 1;
             }
 
             randomPos += 1;
             if(curObject[randomPos] == null ||
                 !CrashCallculator.Instance.isCrash(curObject[randomPos], 
-                startPos[randomPos].position, new Vector3(0, 0, randomSpeed + 5), endPos[randomPos].position)){
+                startPos[randomPos].position, new Vector3(0, 0, randomSpeed + 5 * reverseWay), endPos[randomPos].position)){
                 flag += 2;
             }
             if(flag == 3){
                 GameObject curEvent = Instantiate(listEvent, transform);
                 SalipMobil curSalipMobilScript = curEvent.GetComponent<SalipMobil>();
+
+                curSalipMobilScript.reverseWay = reverseWay;
+                curSalipMobilScript.isFast = isFastTrack[randomPos];
+                
                 int randomCar = Random.Range(0, spawnableObject.Count);
                 int randomCar2 = Random.Range(0, spawnableObject.Count);
 
@@ -202,7 +274,7 @@ public class SpawnMobil : MonoBehaviour
                 curSalipMobilScript.rightPos = startPos[randomPos];
 
                 curSalipMobilScript.slowSpeed = new Vector3(0, 0, randomSpeed);
-                curSalipMobilScript.fastSpeed = new Vector3(0, 0, randomSpeed + 15);
+                curSalipMobilScript.fastSpeed = new Vector3(0, 0, randomSpeed + 15 * reverseWay);
 
                 curSalipMobilScript.spawnMobil = this;
                 curSalipMobilScript.posIdx = randomPos;
@@ -269,7 +341,37 @@ public class SpawnMobil : MonoBehaviour
                 return;
             }
         }
-        counterStandardCar = Random.Range(minCarCounter, maxCarCounter + 1);
+        else if(randomSpecial == 5){
+            int randomPos = Random.Range(0, startPos.Count);
+            int flag = 0;
+            float randomSpeed = Random.Range(lowerBoundSpd, upperBoundSpd);
 
+            if(isFastTrack[randomPos]){
+                randomSpeed += extraSpeed;
+            }
+
+            if(curObject[randomPos] == null ||
+            !CrashCallculator.Instance.isCrash(curObject[randomPos], 
+            startPos[randomPos].position, new Vector3(0, 0, randomSpeed), endPos[randomPos].position)){
+                flag += 1;
+            }
+
+            if(flag == 1){
+                int randomCar = Random.Range(0, openCar.Count);
+                GameObject choosenCar = openCar[randomCar];
+                StartCoroutine(customInstantiateCar(randomPos, 
+                    choosenCar, randomSpeed, isFastTrack[randomPos], CategoryPenalty.Penalty.RoofLess));
+            }
+            else{
+                return;
+            }
+        }
+        counterStandardCar = Random.Range(minCarCounter, maxCarCounter + 1);
+        listSpecialEvent.RemoveAt(randomSpecialIdx);
+        if(listSpecialEvent.Count == 0){
+            for(int i = 0; i < 2; i++){
+                listSpecialEvent.AddRange(originalList);
+            }
+        }
     }
 }

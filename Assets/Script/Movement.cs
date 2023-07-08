@@ -8,6 +8,8 @@ public class Movement : MonoBehaviour
     public Vector3 speed;
     Vector3 baseSpeed;
     public bool stoped = false;
+    [SerializeField] GameObject particleFast;
+    bool fastParticleStatus;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +17,20 @@ public class Movement : MonoBehaviour
     }
 
     private void FixedUpdate() {
+        if(particleFast != null && fastParticleStatus == false && stoped == false){
+            if(particleFast.activeSelf){
+                fastParticleStatus = true;
+            }
+        }
+        if(particleFast != null){
+            if(!stoped && fastParticleStatus && !particleFast.activeSelf){
+                particleFast.SetActive(true);
+            }
+            else if(stoped){
+                particleFast.SetActive(false);
+            }
+        }
+        
         if(speed != Vector3.zero) baseSpeed = speed;
         if(stoped){
             speed = Vector3.zero;
