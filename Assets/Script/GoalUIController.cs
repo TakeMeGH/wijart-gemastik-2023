@@ -57,12 +57,12 @@ public class GoalUIController : MonoBehaviour
     }
 
     public void nextIdx(){
-        showenIdx++;
+        if(showenIdx + numShowenImage < queueUI.Count) showenIdx++;
         showenIdx %= queueUI.Count;
     }
 
     public void prevIdx(){
-        showenIdx--;
+        if(showenIdx >= 1) showenIdx--;
         showenIdx = (showenIdx + queueUI.Count) % queueUI.Count;
     }
 }
