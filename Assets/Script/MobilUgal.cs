@@ -26,7 +26,7 @@ public class MobilUgal : MonoBehaviour
     float originRotationY;
     [Header("Spawn Constraint")]
     public GameObject carModel;
-    GameObject car;
+    public GameObject car;
     public float carSpeed;
     [SerializeField] float spawnOffsetY;
 
@@ -35,6 +35,7 @@ public class MobilUgal : MonoBehaviour
     [Header("Parrent Condition")]
     public SpawnMobil spawnMobil;
     public int posIdx;
+    public bool isFast;
 
 
     // Start is called before the first frame update
@@ -48,14 +49,19 @@ public class MobilUgal : MonoBehaviour
         curTilt = (maxTilt - minTilt + 1) * percentage + minTilt;
 
         turnSpeed *= direction;
-        curTilt *= direction;
+        if(leftBound.localEulerAngles.y == 0) curTilt *= direction;
+        else if(leftBound.localEulerAngles.y == 180) curTilt *= direction * -1;
 
+        curTilt += leftBound.localEulerAngles.y;
         if(direction == 1) car = Instantiate(carModel, leftBound.position, leftBound.rotation);
         else car = Instantiate(carModel, rightBound.position, rightBound.rotation);
 
+        if(isFast){
+            car.GetComponent<FastParticleController>().enableFastParticle();
+        }
         car.transform.rotation = Quaternion.Euler(0, curTilt, 0);
         car.GetComponent<Movement>().speed = new Vector3(0, 0 , 0);
-        originRotationY = car.transform.rotation.y;
+        originRotationY = car.transform.localEulerAngles.y;
         spawnMobil.curObject[posIdx] = car;
         spawnMobil.curObject[posIdx-1] = car;
         car.GetComponent<CategoryPenalty>().curObjectPenalty = CategoryPenalty.Penalty.Ugal;
@@ -76,11 +82,14 @@ public class MobilUgal : MonoBehaviour
             firstTime = false;
         }
         curTime -= Time.deltaTime;
-        if(direction == -1 && car.transform.position.x <= leftBound.position.x){
+        if(car != null && direction == -1 && car.transform.position.x <= leftBound.position.x){
             curTime = 0;
         }
-        else if(direction == 1 && car.transform.position.x >= rightBound.position.x){
+        else if(car != null && direction == 1 && car.transform.position.x >= rightBound.position.x){
             curTime = 0;
+        }
+        else if(car == null){
+            Destroy(gameObject);
         }
         curTransitionTime += Time.deltaTime;
         curTransitionTime = Mathf.Min(curTransitionTime, transitionTime);
@@ -96,11 +105,16 @@ public class MobilUgal : MonoBehaviour
             curTilt = (maxTilt - minTilt + 1) * percentage + minTilt;
 
             turnSpeed *= direction;
-            curTilt *= direction;
+            if(leftBound.localEulerAngles.y == 0) curTilt *= direction;
+            else if(leftBound.localEulerAngles.y == 180) curTilt *= direction * -1;
+            curTilt += leftBound.localEulerAngles.y;
+            if(direction == 1 && leftBound.localEulerAngles.y == 0){
+                curTilt += 360;
+            }
 
             // car.transform.rotation = Quaternion.Euler(0, curTilt, 0);
             car.GetComponent<Movement>().speed = new Vector3(turnSpeed, 0, carSpeed);
-            originRotationY = car.transform.rotation.y;
+            originRotationY = car.transform.localEulerAngles.y;
             curTransitionTime = 0;
 
         }

@@ -92,7 +92,7 @@ MonoBehaviour:
   mobilBesarPadaJalurCepat: 0
   mobilCepat: 0
   mobilRoofLess: 0
-  spawnInterval: 2
+  spawnInterval: 1
   isFastTrack: 00000000000000000000
   listEvent: {fileID: 7248162291673721622}
   spawnOffsetY: 0.01
@@ -194,6 +194,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2486840187428593582}
     m_Modifications:
+    - target: {fileID: 5050121546291279080, guid: 9fc6dabdcfd20ce4493565fcf739df66,
+        type: 3}
+      propertyPath: waitTime
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 5050121546291279081, guid: 9fc6dabdcfd20ce4493565fcf739df66,
         type: 3}
       propertyPath: m_Name
@@ -253,6 +258,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7711565701086020153, guid: 9fc6dabdcfd20ce4493565fcf739df66,
+        type: 3}
+      propertyPath: waitTime
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7711565701086020153, guid: 9fc6dabdcfd20ce4493565fcf739df66,
         type: 3}

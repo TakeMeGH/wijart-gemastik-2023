@@ -11,7 +11,7 @@ public class StarCounter : MonoBehaviour
         [SerializeField] public GameObject starThree;
 
         Animation anim;
-        bool conditionZero;
+        public bool conditionZero;
 
         public bool firstCondition;
         public bool secondCondition;

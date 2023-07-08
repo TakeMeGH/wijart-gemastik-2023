@@ -26,12 +26,18 @@ public class SalipMobil : MonoBehaviour
     bool firstTime = true;
     [SerializeField] float spawnOffsetY;
     public bool isReversed;
-    float rotationYVal = -25;
+    public int reverseWay = 1;
+    [SerializeField] float rotationYVal = -25;
+    public bool isFast;
     // Start is called before the first frame update
     void Start()
-    {
+    {  
         slowMobil = Instantiate(mobilLeft, leftPos.position, leftPos.rotation);
         fastMobil = Instantiate(mobilRight, rightPos.position, rightPos.rotation);
+        if(isFast){
+            slowMobil.GetComponent<FastParticleController>().enableFastParticle();
+            fastMobil.GetComponent<FastParticleController>().enableFastParticle();
+        }
         if(isReversed){
             GameObject temp = fastMobil;
             fastMobil = slowMobil;
@@ -47,6 +53,9 @@ public class SalipMobil : MonoBehaviour
         spawnMobil.curObject[posIdx-1] = slowMobil;
     }
     bool isNotIntercepted(){
+        if(reverseWay == -1){
+            return fastMobil.transform.position.z > slowMobil.transform.position.z - 5;
+        }
         return fastMobil.transform.position.z < slowMobil.transform.position.z + 5;
     }
 
@@ -62,9 +71,8 @@ public class SalipMobil : MonoBehaviour
             fastMobil.transform.position += new Vector3(0, spawnOffsetY, 0);
             slowMobil.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
             fastMobil.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
-
             slowMobil.GetComponent<Movement>().speed = slowSpeed;
-            fastMobil.GetComponent<Movement>().speed = new Vector3(0, 0, slowSpeed.z - 5f);
+            fastMobil.GetComponent<Movement>().speed = new Vector3(0, 0, slowSpeed.z - 5f * reverseWay);
             firstTime = false;
         }
         else if(stableTime > 0){
@@ -76,11 +84,11 @@ public class SalipMobil : MonoBehaviour
         else if(!isNotIntercepted()){
             if(isNotPindahLajur()){
                 fastMobil.GetComponent<CategoryPenalty>().curObjectPenalty = CategoryPenalty.Penalty.Salip;
-                fastMobil.transform.rotation = Quaternion.Euler(0, rotationYVal, 0);
+                fastMobil.transform.rotation = Quaternion.Euler(0, leftPos.localEulerAngles.y + rotationYVal, 0);
                 fastMobil.GetComponent<Movement>().speed = new Vector3(takeOverSpeed, 0, fastSpeed.z);
             }
             else{
-                fastMobil.transform.rotation = Quaternion.Euler(0, 0, 0);
+                fastMobil.transform.rotation = Quaternion.Euler(0, leftPos.localEulerAngles.y, 0);
                 fastMobil.GetComponent<Movement>().speed = slowSpeed;
                 Destroy(this.gameObject);
             }

@@ -31825,6 +31825,9 @@ MonoBehaviour:
   mobilUgal: 20
   mobilSalip: 0
   mobilLambat: 0
+  mobilCepat: 0
+  mobilTerobos: 0
+  mobilRoofLess: 0
 --- !u!4 &670820193 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3681326755520715512, guid: 9b5e5bc443c48644a90ac2011e26ba25,
@@ -94169,7 +94172,7 @@ PrefabInstance:
     - target: {fileID: 6450267197924985520, guid: 7dfbd16e4e0dd0f499de515d368fa9f3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6450267197924985520, guid: 7dfbd16e4e0dd0f499de515d368fa9f3,
         type: 3}
@@ -97063,8 +97066,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd0cb734d4c67b24dabf49cd56258735, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startMinutes: 2
-  currentTimeText: {fileID: 749712494}
+  currentTime: 0
 --- !u!114 &2108605979
 MonoBehaviour:
   m_ObjectHideFlags: 0
