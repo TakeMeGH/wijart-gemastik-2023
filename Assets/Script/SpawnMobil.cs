@@ -130,45 +130,45 @@ public class SpawnMobil : MonoBehaviour
             counterStandardCar = Random.Range(minCarCounter, maxCarCounter + 1);
             return;
         }
-        // List<int> availEvent = new List<int>();
-        // for(int i = 0; i < listSpecialEvent.Count; i++){
-        //     if(listSpecialEvent[i] == 1){
-        //         Goal curGoal = GoalController.Instance.getGoal(CategoryPenalty.Penalty.Salip);
-        //         if(curGoal.curNumbOfPenalty < curGoal.numbOfPenalty){
-        //             availEvent.Add(i);
-        //         }
-        //     }
+        for(int i = listSpecialEvent.Count - 1; i >= 0; i--){
+            if(listSpecialEvent[i] == 1){
+                Goal curGoal = GoalController.Instance.getGoal(CategoryPenalty.Penalty.Salip);
+                if(curGoal.curNumbOfPenalty == curGoal.numbOfPenalty){
+                    listSpecialEvent.RemoveAt(i);
+                }
+            }
 
-        //     if(listSpecialEvent[i] == 2){
-        //         Goal curGoal = GoalController.Instance.getGoal(CategoryPenalty.Penalty.Ugal);
-        //         if(curGoal.curNumbOfPenalty < curGoal.numbOfPenalty){
-        //             availEvent.Add(i);
-        //         }
-        //     }
+            if(listSpecialEvent[i] == 2){
+                Goal curGoal = GoalController.Instance.getGoal(CategoryPenalty.Penalty.Ugal);
+                if(curGoal.curNumbOfPenalty == curGoal.numbOfPenalty){
+                    listSpecialEvent.RemoveAt(i);
+                }
+            }
 
-        //     if(listSpecialEvent[i] == 3){
-        //         Goal curGoal = GoalController.Instance.getGoal(CategoryPenalty.Penalty.Lambat);
-        //         if(curGoal.curNumbOfPenalty < curGoal.numbOfPenalty){
-        //             availEvent.Add(i);
-        //         }
-        //     }
+            if(listSpecialEvent[i] == 3){
+                Goal curGoal = GoalController.Instance.getGoal(CategoryPenalty.Penalty.Lambat);
+                if(curGoal.curNumbOfPenalty == curGoal.numbOfPenalty){
+                    listSpecialEvent.RemoveAt(i);
+                }
+            }
 
-        //     if(listSpecialEvent[i] == 4){
-        //         Goal curGoal = GoalController.Instance.getGoal(CategoryPenalty.Penalty.Cepat);
-        //         if(curGoal.curNumbOfPenalty < curGoal.numbOfPenalty){
-        //             availEvent.Add(i);
-        //         }
-        //     }
+            if(listSpecialEvent[i] == 4){
+                Goal curGoal = GoalController.Instance.getGoal(CategoryPenalty.Penalty.Cepat);
+                if(curGoal.curNumbOfPenalty == curGoal.numbOfPenalty){
+                    listSpecialEvent.RemoveAt(i);
+                }
+            }
 
-        //     if(listSpecialEvent[i] == 5){
-        //         Goal curGoal = GoalController.Instance.getGoal(CategoryPenalty.Penalty.RoofLess);
-        //         if(curGoal.curNumbOfPenalty < curGoal.numbOfPenalty){
-        //             availEvent.Add(i);
-        //         }
-        //     }
-
-        // }
-
+            if(listSpecialEvent[i] == 5){
+                Goal curGoal = GoalController.Instance.getGoal(CategoryPenalty.Penalty.RoofLess);
+                if(curGoal.curNumbOfPenalty == curGoal.numbOfPenalty){
+                    listSpecialEvent.RemoveAt(i);
+                }
+            }
+        }
+        if(listSpecialEvent.Count == 0){
+            listSpecialEvent = new List<int>(originalList);
+        }
         int randomSpecialIdx = Random.Range(0, listSpecialEvent.Count);
         int randomSpecial = listSpecialEvent[randomSpecialIdx];
 
@@ -369,8 +369,49 @@ public class SpawnMobil : MonoBehaviour
         counterStandardCar = Random.Range(minCarCounter, maxCarCounter + 1);
         listSpecialEvent.RemoveAt(randomSpecialIdx);
         if(listSpecialEvent.Count == 0){
+            List<int> availEvent = new List<int>();
+            for(int i = 0; i < originalList.Count; i++){
+                if(originalList[i] == 1){
+                    Goal curGoal = GoalController.Instance.getGoal(CategoryPenalty.Penalty.Salip);
+                    if(curGoal.curNumbOfPenalty < curGoal.numbOfPenalty){
+                        availEvent.Add(originalList[i]);
+                    }
+                }
+
+                if(originalList[i] == 2){
+                    Goal curGoal = GoalController.Instance.getGoal(CategoryPenalty.Penalty.Ugal);
+                    if(curGoal.curNumbOfPenalty < curGoal.numbOfPenalty){
+                        availEvent.Add(originalList[i]);
+                    }
+                }
+
+                if(originalList[i] == 3){
+                    Goal curGoal = GoalController.Instance.getGoal(CategoryPenalty.Penalty.Lambat);
+                    if(curGoal.curNumbOfPenalty < curGoal.numbOfPenalty){
+                        availEvent.Add(originalList[i]);
+                    }
+                }
+
+                if(originalList[i] == 4){
+                    Goal curGoal = GoalController.Instance.getGoal(CategoryPenalty.Penalty.Cepat);
+                    if(curGoal.curNumbOfPenalty < curGoal.numbOfPenalty){
+                        availEvent.Add(originalList[i]);
+                    }
+                }
+
+                if(originalList[i] == 5){
+                    Goal curGoal = GoalController.Instance.getGoal(CategoryPenalty.Penalty.RoofLess);
+                    if(curGoal.curNumbOfPenalty < curGoal.numbOfPenalty){
+                        availEvent.Add(originalList[i]);
+                    }
+                }
+
+            }
+            if(availEvent.Count == 0){
+                availEvent = new List<int>(originalList);
+            }
             for(int i = 0; i < 2; i++){
-                listSpecialEvent.AddRange(originalList);
+                listSpecialEvent.AddRange(availEvent);
             }
         }
     }
