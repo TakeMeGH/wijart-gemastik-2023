@@ -145,6 +145,7 @@ MonoBehaviour:
   speed: {x: 0, y: 0, z: 0}
   stoped: 0
   particleFast: {fileID: 5458191385890946393}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!114 &707999771911446289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,7 +234,7 @@ AudioSource:
   Priority: 188
   DopplerLevel: 0
   MinDistance: 1
-  MaxDistance: 150
+  MaxDistance: 200
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -243,8 +244,8 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.022677306
-      value: 0.12608719
+      time: 0.004999999
+      value: 0.09999466
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -261,8 +262,8 @@ AudioSource:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.8792114
-      value: 0
+      time: 0.94403076
+      value: 0.021728516
       inSlope: -1.0050251
       outSlope: -1.0050251
       tangentMode: 0
