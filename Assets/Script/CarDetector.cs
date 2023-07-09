@@ -50,7 +50,7 @@ public class CarDetector : MonoBehaviour
     public void makeBehindMove(){
         Vector3 curPosition = transform.position;
         Vector3 direction = Vector3.back;
-        if (Physics.Raycast(curPosition, direction, out longHit, 20f, _myLayerMask)){
+        if (Physics.Raycast(curPosition, direction, out longHit, 30f, _myLayerMask)){
             if(longHit.transform.gameObject.tag == "mobil"){
                 longHit.transform.gameObject.GetComponent<Movement>().stoped = false;
             }

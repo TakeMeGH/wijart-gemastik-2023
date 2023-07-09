@@ -58,6 +58,11 @@ public class MobilUgal : MonoBehaviour
 
         if(isFast){
             car.GetComponent<FastParticleController>().enableFastParticle();
+            car.GetComponent<MobilAudio>().audioCepat();
+        }
+        else{
+            car.GetComponent<MobilAudio>().audioLambat();
+
         }
         car.transform.rotation = Quaternion.Euler(0, curTilt, 0);
         car.GetComponent<Movement>().speed = new Vector3(0, 0 , 0);
@@ -94,7 +99,10 @@ public class MobilUgal : MonoBehaviour
         curTransitionTime += Time.deltaTime;
         curTransitionTime = Mathf.Min(curTransitionTime, transitionTime);
         float degree = Mathf.Lerp(originRotationY, curTilt, curTransitionTime / transitionTime);
-        car.transform.rotation = Quaternion.Euler(0, degree, 0);
+        if(car == null ){
+            Destroy(gameObject);
+        }
+        else if(car != null) car.transform.rotation = Quaternion.Euler(0, degree, 0);
 
         if(curTime <= 0){
             direction *= -1;
@@ -113,6 +121,9 @@ public class MobilUgal : MonoBehaviour
             }
 
             // car.transform.rotation = Quaternion.Euler(0, curTilt, 0);
+            if(car == null ){
+                Destroy(gameObject);
+            }
             car.GetComponent<Movement>().speed = new Vector3(turnSpeed, 0, carSpeed);
             originRotationY = car.transform.localEulerAngles.y;
             curTransitionTime = 0;

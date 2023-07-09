@@ -23,6 +23,7 @@ public class KeretaController : MonoBehaviour
     float lastPenalty;
     float curTime;
     bool isSpawned;
+    bool isPlaying = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,9 +41,11 @@ public class KeretaController : MonoBehaviour
         }
         else{
             curTime += Time.deltaTime;
-            if(curTime <= waitTime){
+            if( GoalController.Instance.isFinished() || curTime <= waitTime){
+                isPlaying = false;
                 for(int i = 0; i < lampuLaluLintas.Count; i++){
                     lampuLaluLintas[i].GetComponent<Animator>().Play("idle");
+                    lampuLaluLintas[i].GetComponent<AudioSource>().Stop();
                 }
                 for(int i = 0; i < antrianMobil.Count; i++){
                     antrianMobil[i].isNextMustStop = false;
@@ -57,9 +60,14 @@ public class KeretaController : MonoBehaviour
                 }
             }
             else if(curTime <= waitTime + invisMustWaitTime + alertTime){
-                for(int i = 0; i < lampuLaluLintas.Count; i++){
-                    lampuLaluLintas[i].GetComponent<Animator>().Play("alert");
+                if(isPlaying == false){
+                    isPlaying = true;
+                    for(int i = 0; i < lampuLaluLintas.Count; i++){
+                        lampuLaluLintas[i].GetComponent<Animator>().Play("alert");
+                        lampuLaluLintas[i].GetComponent<AudioSource>().Play();
+                    }
                 }
+               
                 lastPenalty -= Time.deltaTime;
                 if(curTime <= waitTime + invisMustWaitTime + spawnPenaltyTime && lastPenalty <= 0){
                     int idxSkip = Random.Range(0, antrianMobil.Count);
