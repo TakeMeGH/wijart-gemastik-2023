@@ -151,28 +151,28 @@ public class SpawnMobil : MonoBehaviour
                 }
             }
 
-            if(listSpecialEvent[i] == 2){
+            else if(listSpecialEvent[i] == 2){
                 Goal curGoal = GoalController.Instance.getGoal(CategoryPenalty.Penalty.Ugal);
                 if(curGoal.curNumbOfPenalty == curGoal.numbOfPenalty){
                     listSpecialEvent.RemoveAt(i);
                 }
             }
 
-            if(listSpecialEvent[i] == 3){
+            else if(listSpecialEvent[i] == 3){
                 Goal curGoal = GoalController.Instance.getGoal(CategoryPenalty.Penalty.Lambat);
                 if(curGoal.curNumbOfPenalty == curGoal.numbOfPenalty){
                     listSpecialEvent.RemoveAt(i);
                 }
             }
 
-            if(listSpecialEvent[i] == 4){
+            else if(listSpecialEvent[i] == 4){
                 Goal curGoal = GoalController.Instance.getGoal(CategoryPenalty.Penalty.Cepat);
                 if(curGoal.curNumbOfPenalty == curGoal.numbOfPenalty){
                     listSpecialEvent.RemoveAt(i);
                 }
             }
 
-            if(listSpecialEvent[i] == 5){
+            else if(listSpecialEvent[i] == 5){
                 Goal curGoal = GoalController.Instance.getGoal(CategoryPenalty.Penalty.RoofLess);
                 if(curGoal.curNumbOfPenalty == curGoal.numbOfPenalty){
                     listSpecialEvent.RemoveAt(i);

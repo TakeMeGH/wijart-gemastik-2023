@@ -24,12 +24,13 @@ public class MobilAudio : MonoBehaviour
 
     public void audioCepat(){
         audioSource.clip = ngebut;
+        audioSource.volume = 0.1f;
         audioSource.Play();
     }
 
     public void audioLambat(){
         audioSource.clip = lambat;
-        audioSource.volume = 1f;
+        audioSource.volume = 0.3f;
         audioSource.Play();
     }
 }
