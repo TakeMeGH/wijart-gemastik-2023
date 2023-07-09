@@ -19,6 +19,7 @@ public class ScoreAdder : MonoBehaviour
         // curTime = disappearTime;
         Vector2 anchoredPos;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(parentTransform, Input.mousePosition, null, out anchoredPos);
+        // dummy
         GameObject temp = Instantiate(flyingText, new Vector2(anchoredPos.x, anchoredPos.y), Quaternion.identity);
     }
 
@@ -56,6 +57,33 @@ public class ScoreAdder : MonoBehaviour
 
         // curTime = 0;
         showedText.color = tempColor;
+
+
+        // if(addScoreUI != null){
+        //     StopCoroutine(addScoreUI);
+        // }
+        // addScoreUI = StartCoroutine(addScoreCoroutine(value, correct));
+    }
+
+    public void addMessage(string message){
+        Vector2 anchoredPos;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(parentTransform, Input.mousePosition, null, out anchoredPos);
+        GameObject temp = Instantiate(flyingText, new Vector2(anchoredPos.x, anchoredPos.y), Quaternion.identity);
+        temp.SetActive(true);
+        temp.transform.SetParent(m_canvas.transform, false);
+
+        TMP_Text showedText = temp.GetComponent<TMP_Text>();
+        FlyingText tempFlyingText = temp.GetComponent<FlyingText>();
+
+        showedText.text = message;
+        tempFlyingText.isNotScore = true;
+
+        Color tempColor = showedText.color;
+        tempColor = Color.white;
+        tempColor.a = 1;
+        showedText.color = tempColor;
+
+        // curTime = 0;
 
 
         // if(addScoreUI != null){

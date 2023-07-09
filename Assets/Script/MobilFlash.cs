@@ -42,6 +42,7 @@ public class MobilFlash : MonoBehaviour
             if(firstCorrect == true){
                 SoundUI.Instance.playSoundByName("NetralClick");
                 clickRoutine = StartCoroutine(changeMaterial(netralArray));
+                ScoreController.Instance.messageClick("Used");
             }
             else{
                 int ret = GoalController.Instance.clickCar(categoryPenalty.curObjectPenalty);
@@ -63,6 +64,8 @@ public class MobilFlash : MonoBehaviour
                 else if(ret == -1){
                     SoundUI.Instance.playSoundByName("NetralClick");
                     clickRoutine = StartCoroutine(changeMaterial(netralArray));
+                    ScoreController.Instance.messageClick("Completed");
+
                 }
             }
         }

@@ -11,6 +11,7 @@ public class FlyingText : MonoBehaviour
     Vector2 originPosition;
     Vector2 finishPosition;
     RectTransform curRect;
+    public bool isNotScore;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +29,14 @@ public class FlyingText : MonoBehaviour
             ScoreController.Instance.currentScore += value;
             Destroy(gameObject);
         }
-        curTime += Time.deltaTime;
-        curRect.anchoredPosition = Vector2.Lerp(originPosition, finishPosition, curTime / finishTime);
+        if(isNotScore){
+            curTime += Time.deltaTime;
+            curRect.anchoredPosition = new Vector2(curRect.anchoredPosition.x, curRect.anchoredPosition.y + Time.deltaTime * 30f);
+        }
+        else{
+            curTime += Time.deltaTime;
+            curRect.anchoredPosition = Vector2.Lerp(originPosition, finishPosition, curTime / finishTime);
+
+        }
     }
 }

@@ -8,7 +8,7 @@ public class ClickMobil : MonoBehaviour
     private Ray _ray;
     private RaycastHit _hit;
     private int _myLayerMask = 1 << 6;
-    [SerializeField] float recaptureTime;
+    const float RECAPTURETIME = 0.75f;
     float curRecaptureTime;
     [SerializeField] UIFlash cameraUI;
     // Start is called before the first frame update
@@ -39,7 +39,7 @@ public class ClickMobil : MonoBehaviour
                 {
                     _hit.transform.gameObject.GetComponent<MobilFlash>().clicked();
                     cameraUI.takePicture();
-                    curRecaptureTime = recaptureTime;
+                    curRecaptureTime = RECAPTURETIME;
                 }
             }
         }

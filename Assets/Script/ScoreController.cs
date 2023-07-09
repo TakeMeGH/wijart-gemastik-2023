@@ -49,4 +49,9 @@ public class ScoreController : MonoBehaviour
         scoreAdder.addScore(value, false);
 
     }
+
+    public void messageClick(string message){
+        scoreAdder.addMessage(message);
+    }
+
 }
