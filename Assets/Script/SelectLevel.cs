@@ -6,6 +6,7 @@ public class SelectLevel : MonoBehaviour
 {
     [SerializeField] GameObject selectMenu;
     [SerializeField] GameObject mainMenu;
+    [SerializeField] GameObject CreditsScene;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,11 +23,22 @@ public class SelectLevel : MonoBehaviour
         SoundUI.Instance.playSoundByName("Click");
         selectMenu.SetActive(true);
         mainMenu.SetActive(false);
+        CreditsScene.SetActive(false);
     }
 
     public void activateMainMenu(){
         SoundUI.Instance.playSoundByName("Click");
-        selectMenu.SetActive(false);
         mainMenu.SetActive(true);
+        selectMenu.SetActive(false);
+        CreditsScene.SetActive(false);
+
+    }
+
+    public void activateCredits(){
+        SoundUI.Instance.playSoundByName("Click");
+        CreditsScene.SetActive(true);
+        mainMenu.SetActive(false);
+        selectMenu.SetActive(false);
+
     }
 }
