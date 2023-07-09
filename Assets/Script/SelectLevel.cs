@@ -5,6 +5,7 @@ using UnityEngine;
 public class SelectLevel : MonoBehaviour
 {
     [SerializeField] GameObject selectMenu;
+    [SerializeField] GameObject mainMenu;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,12 @@ public class SelectLevel : MonoBehaviour
     public void activateSelectMenu(){
         SoundUI.Instance.playSoundByName("Click");
         selectMenu.SetActive(true);
-        gameObject.SetActive(false);
+        mainMenu.SetActive(false);
+    }
+
+    public void activateMainMenu(){
+        SoundUI.Instance.playSoundByName("Click");
+        selectMenu.SetActive(false);
+        mainMenu.SetActive(true);
     }
 }
