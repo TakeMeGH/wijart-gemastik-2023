@@ -11,11 +11,13 @@ public class Movement : MonoBehaviour
     [SerializeField] GameObject particleFast;
     bool fastParticleStatus;
     AudioSource audioSource;
+    public Vector3 offset;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
+        transform.position += offset;
     }
 
     private void FixedUpdate() {

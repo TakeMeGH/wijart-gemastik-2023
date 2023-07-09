@@ -146,6 +146,7 @@ MonoBehaviour:
   speed: {x: 0, y: 0, z: 0}
   stoped: 0
   particleFast: {fileID: 1046370270544283794}
+  offset: {x: 0, y: -0.1, z: 0}
 --- !u!114 &-1168774585621309849
 MonoBehaviour:
   m_ObjectHideFlags: 0
