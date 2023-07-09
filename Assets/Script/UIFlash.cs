@@ -11,19 +11,20 @@ public class UIFlash : MonoBehaviour
     Material originalMaterial;
     Image curImage;
     float curTime;
+    const float DURATION = 0.75f;
     
     // Start is called before the first frame update
     void Start()
     {
         curImage = GetComponent<Image>();
         originalMaterial = curImage.material;
-        curTime = 1.6f;
+        curTime = DURATION + 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(curTime > 1.5f){
+        if(curTime > DURATION){
             Color temp = fill.color;
             temp.a  = 0;
             fill.color = temp;
@@ -34,7 +35,7 @@ public class UIFlash : MonoBehaviour
             temp.a  = 1;
             fill.color = temp;
 
-            fill.fillAmount = Mathf.Min(1f, (float)curTime / 1.5f);
+            fill.fillAmount = Mathf.Min(1f, (float)curTime / DURATION);
         }
     }
 
@@ -56,7 +57,7 @@ public class UIFlash : MonoBehaviour
                 temp.a = 1;
                 curImage.color = temp;
             }
-            yield return new WaitForSecondsRealtime(0.15f);
+            yield return new WaitForSecondsRealtime(DURATION / 10);
         }
       
     }
