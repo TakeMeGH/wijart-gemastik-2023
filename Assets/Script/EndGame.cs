@@ -10,6 +10,7 @@ public class EndGame : MonoBehaviour
     [SerializeField] Condition threeStar;
     [SerializeField] Condition twoStar;
     [SerializeField] Condition oneStar;
+    [SerializeField] WinningConditionSound winningConditionSound;
     float waitTime = 2f;
     
 
@@ -28,6 +29,7 @@ public class EndGame : MonoBehaviour
         if(GoalController.Instance.isFinished()){
             waitTime -= Time.deltaTime;
             if(waitTime > 0) return;
+            winningConditionSound.playWinning();
             ingameUI.SetActive(false);
             winningFrame.SetActive(true);
             if(Timer.Instance.currentTime <= threeStar.timer && ScoreController.Instance.currentScore >= threeStar.point){

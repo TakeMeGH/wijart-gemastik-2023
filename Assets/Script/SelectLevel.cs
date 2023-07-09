@@ -18,6 +18,7 @@ public class SelectLevel : MonoBehaviour
     }
 
     public void activateSelectMenu(){
+        SoundUI.Instance.playSoundByName("Click");
         selectMenu.SetActive(true);
         gameObject.SetActive(false);
     }

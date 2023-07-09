@@ -37,6 +37,13 @@ public class SalipMobil : MonoBehaviour
         if(isFast){
             slowMobil.GetComponent<FastParticleController>().enableFastParticle();
             fastMobil.GetComponent<FastParticleController>().enableFastParticle();
+
+            slowMobil.GetComponent<MobilAudio>().audioCepat();
+            fastMobil.GetComponent<MobilAudio>().audioCepat();
+        }
+        else{
+            slowMobil.GetComponent<MobilAudio>().audioLambat();
+            fastMobil.GetComponent<MobilAudio>().audioLambat();
         }
         if(isReversed){
             GameObject temp = fastMobil;
@@ -46,6 +53,7 @@ public class SalipMobil : MonoBehaviour
             rotationYVal *= -1f;
 
         }
+
         slowMobil.GetComponent<Movement>().speed = Vector3.zero;
         fastMobil.GetComponent<Movement>().speed = Vector3.zero;
 

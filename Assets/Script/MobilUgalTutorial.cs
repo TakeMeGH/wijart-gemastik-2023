@@ -53,6 +53,15 @@ public class MobilUgalTutorial : MonoBehaviour
         if(direction == 1) car = Instantiate(carModel, leftBound.position, leftBound.rotation);
         else car = Instantiate(carModel, rightBound.position, rightBound.rotation);
 
+        // if(isFast){
+        //     car.GetComponent<FastParticleController>().enableFastParticle();
+        //     car.GetComponent<MobilAudio>().audioCepat();
+        // }
+        // else{
+        //     car.GetComponent<MobilAudio>().audioLambat();
+
+        // }
+
         car.transform.rotation = Quaternion.Euler(0, curTilt, 0);
         car.GetComponent<Movement>().speed = new Vector3(0, 0 , 0);
         originRotationY = car.transform.rotation.y;
