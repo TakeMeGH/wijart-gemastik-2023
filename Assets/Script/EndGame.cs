@@ -8,9 +8,9 @@ public class EndGame : MonoBehaviour
     [SerializeField] GameObject winningFrame;
     [SerializeField] GameObject ingameUI;
     [SerializeField] StarCounter starCounter;
-    [SerializeField] Condition threeStar;
-    [SerializeField] Condition twoStar;
-    [SerializeField] Condition oneStar;
+    public Condition threeStar;
+    public Condition twoStar;
+    public Condition oneStar;
     [SerializeField] WinningConditionSound winningConditionSound;
     
     float waitTime = 2f;
