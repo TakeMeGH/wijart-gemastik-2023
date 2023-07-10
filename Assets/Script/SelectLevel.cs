@@ -21,9 +21,10 @@ public class SelectLevel : MonoBehaviour
 
     public void activateSelectMenu(){
         SoundUI.Instance.playSoundByName("Click");
-        selectMenu.SetActive(true);
-        mainMenu.SetActive(false);
-        CreditsScene.SetActive(false);
+        SceneHandler.Instance.loadNextLevel();
+        // selectMenu.SetActive(true);
+        // mainMenu.SetActive(false);
+        // CreditsScene.SetActive(false);
     }
 
     public void activateMainMenu(){

@@ -27,12 +27,12 @@ public class SaveSystem : MonoBehaviour
     {
     }
 
-    void saveBintang(string levelName, int bintangCount){
+    public void saveBintang(string levelName, int bintangCount){
       int curBintang = PlayerPrefs.GetInt(levelName);
       PlayerPrefs.SetInt(levelName, Mathf.Max(curBintang, bintangCount));
     }
 
-    int getBintang(string levelName){
+    public int getBintang(string levelName){
       return PlayerPrefs.GetInt(levelName);
     }
 }
