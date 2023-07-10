@@ -38,13 +38,21 @@ public class SalipMobil : MonoBehaviour
             slowMobil.GetComponent<FastParticleController>().enableFastParticle();
             fastMobil.GetComponent<FastParticleController>().enableFastParticle();
 
-            slowMobil.GetComponent<MobilAudio>().audioCepat();
-            fastMobil.GetComponent<MobilAudio>().audioCepat();
+            // fastMobil.GetComponent<MobilAudio>().audioCepat();
         }
-        else{
-            slowMobil.GetComponent<MobilAudio>().audioLambat();
-            fastMobil.GetComponent<MobilAudio>().audioLambat();
+        if(spawnMobil.soundCar == null){
+            if(isFast){
+                slowMobil.GetComponent<MobilAudio>().audioCepat();
+
+            }
+            else{
+                slowMobil.GetComponent<MobilAudio>().audioLambat();
+            }
+            spawnMobil.soundCar = slowMobil;
         }
+        // else{
+        //     // fastMobil.GetComponent<MobilAudio>().audioLambat();
+        // }
         if(isReversed){
             GameObject temp = fastMobil;
             fastMobil = slowMobil;
