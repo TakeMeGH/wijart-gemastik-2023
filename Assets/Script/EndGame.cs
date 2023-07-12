@@ -8,10 +8,11 @@ public class EndGame : MonoBehaviour
     [SerializeField] GameObject winningFrame;
     [SerializeField] GameObject ingameUI;
     [SerializeField] StarCounter starCounter;
-    [SerializeField] Condition threeStar;
-    [SerializeField] Condition twoStar;
-    [SerializeField] Condition oneStar;
+    public Condition threeStar;
+    public Condition twoStar;
+    public Condition oneStar;
     [SerializeField] WinningConditionSound winningConditionSound;
+    [SerializeField] GameObject buttonPlay;
     
     float waitTime = 2f;
     bool isCalled = false;
@@ -55,6 +56,7 @@ public class EndGame : MonoBehaviour
             else{
                 starCounter.conditionZero = true;
                 SaveSystem.Instance.saveBintang(levelName, 0);
+                buttonPlay.SetActive(false);
             }
         }    
     }

@@ -60,10 +60,17 @@ public class MobilUgal : MonoBehaviour
             car.GetComponent<FastParticleController>().enableFastParticle();
             car.GetComponent<MobilAudio>().audioCepat();
         }
-        else{
-            car.GetComponent<MobilAudio>().audioLambat();
+        if(spawnMobil.soundCar == null){
+            if(isFast){
+                car.GetComponent<MobilAudio>().audioCepat();
 
+            }
+            else{
+                car.GetComponent<MobilAudio>().audioLambat();
+            }
+            spawnMobil.soundCar = car;
         }
+        
         car.transform.rotation = Quaternion.Euler(0, curTilt, 0);
         car.GetComponent<Movement>().speed = new Vector3(0, 0 , 0);
         originRotationY = car.transform.localEulerAngles.y;

@@ -39,6 +39,7 @@ public class SpawnMobil : MonoBehaviour
     [SerializeField] int maxCarCounter;
     int counterStandardCar = 0;    
     List<int> originalList = new List<int>();
+    public GameObject soundCar;
     // Start is called before the first frame update
     void Start()
     {
@@ -115,7 +116,7 @@ public class SpawnMobil : MonoBehaviour
         startPos[posIdx].position, startPos[posIdx].rotation);
         // int luckyNumber = 10;
         // int rndNumber = Random.Range(1, 11);
-        if(isSpecial){
+        if(soundCar == null){
             if(fastParticle && spawnedCar.tag != "orang"){
                 // spawnedCar.GetComponent<FastParticleController>().enableFastParticle();
                 spawnedCar.GetComponent<MobilAudio>().audioCepat();
@@ -123,6 +124,7 @@ public class SpawnMobil : MonoBehaviour
             else if(spawnedCar.tag != "orang"){
                 spawnedCar.GetComponent<MobilAudio>().audioLambat();
             }
+            soundCar = spawnedCar;
         }
 
         if(fastParticle){
